@@ -26,11 +26,17 @@ public class BlockMove : MonoBehaviour
     private void OnMouseDown()
     {
         dir = GetMousePos() - transform.position;
+        transform.SetParent(GameManager.Instance.clickedObjectBox);
     }
 
     private void OnMouseDrag()
     {
         transform.position = GetMousePos() - dir;
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        transform.SetParent(GameManager.Instance.blockBox);
     }
 
     private Vector3 GetMousePos()
