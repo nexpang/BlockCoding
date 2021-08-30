@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject currentClickedObj;
     public BlockMove[] allBlocks;
+
+    public Action downDetect;
 
     private void Awake()
     {

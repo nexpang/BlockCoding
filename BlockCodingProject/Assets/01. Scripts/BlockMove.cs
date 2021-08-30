@@ -23,6 +23,7 @@ public class BlockMove : MonoBehaviour
     Vector3 dir = Vector3.zero;
     Outline outline;
     protected Transform mainBlockParent;
+    public List<BlockMove> allDownBlocks = new List<BlockMove>();
     BoxCollider2D[] boxColliders;
 
     private void Awake()
@@ -36,6 +37,11 @@ public class BlockMove : MonoBehaviour
         isUpAttachable = UpAttachPoint != null;
         isDownAttachable = DownAttachPoint != null;
         boxColliders = mainBlockParent.GetComponentsInChildren<BoxCollider2D>();
+
+        GameManager.Instance.downDetect += () =>
+        {
+            allDownBlocks = GetDownAllBlocks();
+        };
     }
 
     private void OnMouseEnter()
@@ -55,6 +61,10 @@ public class BlockMove : MonoBehaviour
         mainBlockParent.transform.SetParent(GameManager.Instance.clickedObjectBox);
         GameManager.Instance.currentClickedObj = this.gameObject;
 
+        for (int i = 0; i < allDownBlocks.Count; i++)
+        {
+            allDownBlocks[i].mainBlockParent.SetParent(mainBlockParent);
+        }
         StartCoroutine(RefreshCollider());
     }
 
@@ -65,20 +75,28 @@ public class BlockMove : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {
-        mainBlockParent.transform.SetParent(GameManager.Instance.blockBox);
+        if (upBlock != null)
+        {
+            upBlock.allDownBlocks.Clear();
+            upBlock.downBlock = null;
+            upBlock = null;
+        }
+
+        if (downBlock == null)
+        {
+            allDownBlocks.Clear();
+        }
+
         if (toBeAttachBlockList.Count > 0)
         {
             UpAttachReady();
             DownAttachReady();
-
-            BlockHighlight(toBeAttachBlockList[0].outline,false);
+            BlockHighlight(toBeAttachBlockList[0].outline, false);
             toBeAttachBlockList.Clear();
         }
         else
         {
-            upBlock = null;
-            downBlock = null;
-            for (int i = 0; i < GameManager.Instance.allBlocks.Length; i++)
+/*            for (int i = 0; i < GameManager.Instance.allBlocks.Length; i++)
             {
                 if (GameManager.Instance.allBlocks[i].upBlock == this)
                 {
@@ -88,9 +106,18 @@ public class BlockMove : MonoBehaviour
                 if (GameManager.Instance.allBlocks[i].downBlock == this)
                 {
                     GameManager.Instance.allBlocks[i].downBlock = null;
+                    GameManager.Instance.allBlocks[i].allDownBlocks.Clear();
                 }
-            }
+            }*/
             OnNoneBlockDetect();
+        }
+
+        GameManager.Instance.downDetect();
+
+        mainBlockParent.transform.SetParent(GameManager.Instance.blockBox);
+        for (int i = 0; i < allDownBlocks.Count; i++)
+        {
+            allDownBlocks[i].mainBlockParent.SetParent(GameManager.Instance.blockBox);
         }
     }
 
@@ -138,6 +165,11 @@ public class BlockMove : MonoBehaviour
                 for (int i = 0; i < toBeAttachBlockList.Count; i++)
                 {
                     if (toBeAttachBlockList[i] == collision.FoundBlock()) return;
+                }
+
+                for (int i = 0; i < allDownBlocks.Count; i++)
+                {
+                    if (allDownBlocks[i] == collision.FoundBlock()) return;
                 }
 
                 for (int i = 0; i < boxColliders.Length; i++)
@@ -234,12 +266,35 @@ public class BlockMove : MonoBehaviour
         yield return null;
         foreach (BoxCollider2D item in boxColliders)
         {
-            item.enabled = true; ;
+            item.enabled = true;
         }
     }
 
     protected virtual void OnNoneBlockDetect()
     {
         mainBlockParent.transform.SetParent(GameManager.Instance.unAttachedObjBox);
+    }
+
+    protected List<BlockMove> GetDownAllBlocks()
+    {
+        allDownBlocks.Clear();
+        DownBlockSave(this);
+
+        return allDownBlocks;
+    }
+
+    void DownBlockSave(BlockMove block)
+    {
+        if (block.downBlock != null)
+        {
+            allDownBlocks.Add(block.downBlock);
+            if(allDownBlocks.Count > 10)
+            {
+                Debug.LogError("무한루프 감지");
+                return;
+            }
+            DownBlockSave(block.downBlock);
+
+        }
     }
 }
