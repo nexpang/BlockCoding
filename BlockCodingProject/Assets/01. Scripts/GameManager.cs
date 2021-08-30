@@ -8,9 +8,18 @@ public class GameManager : MonoBehaviour
 
     public Transform blockBox;
     public Transform clickedObjectBox;
+    public Transform unAttachedObjBox;
+
+    public GameObject currentClickedObj;
+    public BlockMove[] allBlocks;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        allBlocks = FindObjectsOfType<BlockMove>();
     }
 }
