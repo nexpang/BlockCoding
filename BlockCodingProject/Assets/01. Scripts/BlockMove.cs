@@ -61,6 +61,7 @@ public class BlockMove : MonoBehaviour
         mainBlockParent.transform.SetParent(GameManager.Instance.clickedObjectBox);
         GameManager.Instance.currentClickedObj = this.gameObject;
 
+        GameManager.Instance.downDetect();
         for (int i = 0; i < allDownBlocks.Count; i++)
         {
             allDownBlocks[i].mainBlockParent.SetParent(mainBlockParent);
@@ -96,23 +97,8 @@ public class BlockMove : MonoBehaviour
         }
         else
         {
-/*            for (int i = 0; i < GameManager.Instance.allBlocks.Length; i++)
-            {
-                if (GameManager.Instance.allBlocks[i].upBlock == this)
-                {
-                    GameManager.Instance.allBlocks[i].upBlock = null;
-                }
-
-                if (GameManager.Instance.allBlocks[i].downBlock == this)
-                {
-                    GameManager.Instance.allBlocks[i].downBlock = null;
-                    GameManager.Instance.allBlocks[i].allDownBlocks.Clear();
-                }
-            }*/
             OnNoneBlockDetect();
         }
-
-        GameManager.Instance.downDetect();
 
         mainBlockParent.transform.SetParent(GameManager.Instance.blockBox);
         for (int i = 0; i < allDownBlocks.Count; i++)
@@ -125,7 +111,10 @@ public class BlockMove : MonoBehaviour
     {
         if (upAttachReady)
         {
+            upAttachReady = false;
+
             if (!isDownAttachable) return;
+            if (toBeAttachBlockList[0].upBlock != null) return;
 
             BlockPointSet(new Vector2(0, 0), toBeAttachBlockList[0].UpAttachPoint.position);
             downBlock = toBeAttachBlockList[0];
@@ -138,7 +127,6 @@ public class BlockMove : MonoBehaviour
             {
                 HierarchySort(toBeAttachBlockList[0].GetHierarchySort() - 1);
             }
-            upAttachReady = false;
         }
     }
 
@@ -146,13 +134,15 @@ public class BlockMove : MonoBehaviour
     {
         if (downAttachReady)
         {
+            downAttachReady = false;
+
             if (!isUpAttachable) return;
+            if (toBeAttachBlockList[0].downBlock != null) return;
 
             BlockPointSet(new Vector2(0, 1), toBeAttachBlockList[0].DownAttachPoint.position);
             upBlock = toBeAttachBlockList[0];
             toBeAttachBlockList[0].downBlock = this;
             HierarchySort(toBeAttachBlockList[0].GetHierarchySort() + 1);
-            downAttachReady = false;
         }
     }
 
