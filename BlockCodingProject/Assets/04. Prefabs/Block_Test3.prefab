@@ -364,6 +364,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300437304115963407, guid: b81ee0190cdc72645a81600aa5cc75af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300437304115963407, guid: b81ee0190cdc72645a81600aa5cc75af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -50
+      objectReference: {fileID: 0}
     - target: {fileID: 5555659641973159869, guid: b81ee0190cdc72645a81600aa5cc75af, type: 3}
       propertyPath: m_Name
       value: ColliderDown
@@ -490,6 +498,14 @@ PrefabInstance:
     - target: {fileID: 5923665966839197854, guid: 2cbbe4298e945964ca58335a35fe6653, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085008184930148722, guid: 2cbbe4298e945964ca58335a35fe6653, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8085008184930148722, guid: 2cbbe4298e945964ca58335a35fe6653, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cbbe4298e945964ca58335a35fe6653, type: 3}
