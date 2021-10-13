@@ -6,23 +6,19 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    public Transform blockBox;
-    public Transform clickedObjectBox;
-    public Transform unAttachedObjBox;
-
-    public GameObject currentClickedObj;
-    public BlockMove[] allBlocks;
-
-    public Action downDetect;
+    public List<LineGenerate> lineCircles = new List<LineGenerate>();
 
     private void Awake()
     {
-        Instance = this;
+        if (!Instance)
+        {
+            Instance = this;
+        }
     }
 
-    private void Start()
+    public static Vector3 ScreenToWorldPoint()
     {
-        allBlocks = FindObjectsOfType<BlockMove>();
+        Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return new Vector3(point.x, point.y, 5);
     }
 }

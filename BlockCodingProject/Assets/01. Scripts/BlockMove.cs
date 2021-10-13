@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -260,10 +260,10 @@ public class BlockMove : MonoBehaviour
         }
     }
 
-    protected virtual void OnNoneBlockDetect()
+*//*    protected virtual void OnNoneBlockDetect()
     {
         mainBlockParent.transform.SetParent(GameManager.Instance.unAttachedObjBox);
-    }
+    }*//*
 
     protected List<BlockMove> GetDownAllBlocks()
     {
@@ -288,3 +288,4 @@ public class BlockMove : MonoBehaviour
         }
     }
 }
+*/
