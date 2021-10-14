@@ -180,7 +180,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 GameManager.Instance.currentSelectCircle = null;
                 return;
             }
-            UIManager.DisabledCircleRange();
+
             AddCorner(pos);
         }
     }
@@ -224,23 +224,35 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         connectedHole = null;
     }
 
-    public void AddCorner(Vector2 pos)
+    public void AddCorner(Vector3 pos)
     {
         if (defaultCornerCount <= lineCorners.Count) return;
 
-        LineCorner newCorner = PoolManager.GetItem<LineCorner>();
-        newCorner.transform.position = pos;
-
         if(lineCorners.Count > 0)
         {
-            Vector3 dir = lineCorners[lineCorners.Count - 1].transform.position - newCorner.transform.position;
+            Vector3 dir = lineCorners[lineCorners.Count - 1].transform.position - pos;
+
+            if(dir.magnitude < atLeastDis)
+            {
+                return;
+            }
             remainDis -= dir.magnitude;
         }
         else
         {
-            Vector3 dir = transform.position - newCorner.transform.position;
+            Vector3 dir = transform.position - pos;
+
+            if (dir.magnitude < atLeastDis)
+            {
+                return;
+            }
             remainDis -= dir.magnitude;
         }
+
+        UIManager.DisabledCircleRange();
+
+        LineCorner newCorner = PoolManager.GetItem<LineCorner>();
+        newCorner.transform.position = pos;
 
         lineCorners.Add(newCorner);
         lineWayPoints[lineCorners.Count] = new Vector3(newCorner.transform.position.x, newCorner.transform.position.y, 5);
