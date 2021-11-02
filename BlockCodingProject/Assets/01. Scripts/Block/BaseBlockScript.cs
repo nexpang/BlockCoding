@@ -14,9 +14,9 @@ public class BaseBlockScript : BlockScript
         output.myBlock = this;
     }
 
-    public override void OnConnected()
+    public override void OnConnected(BlockScript connectedBy)
     {
-        base.OnConnected();
+        base.OnConnected(connectedBy);
         childBlock = output.connectedHole.myBlock.GetComponent<ChildBlockScript>();
         if(childBlock != null)
         {
@@ -24,9 +24,9 @@ public class BaseBlockScript : BlockScript
         }
     }
 
-    public override void OnDisconnected()
+    public override void OnDisconnected(BlockScript disconnectedBy)
     {
-        base.OnDisconnected();
+        base.OnDisconnected(disconnectedBy);
         if (childBlock != null)
         {
             childBlock.onPlay = null;

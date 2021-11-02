@@ -6,12 +6,12 @@ public class BlockScript : MonoBehaviour
 {
     public bool isConnected = false;
 
-    public virtual void OnDisconnected()
+    public virtual void OnDisconnected(BlockScript disconnectedBy)
     {
         isConnected = false;
     }
 
-    public virtual void OnConnected()
+    public virtual void OnConnected(BlockScript connectedBy)
     {
         isConnected = true;
     }
