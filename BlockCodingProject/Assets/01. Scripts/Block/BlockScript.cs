@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class BlockScript : MonoBehaviour
 {
-    public LineGenerate input;
-    public LineGenerate output;
+    public bool isConnected = false;
 
-    private void Awake()
+    public virtual void OnDisconnected()
     {
-        input.myBlock = this;
-        output.myBlock = this;
+        isConnected = false;
+    }
+
+    public virtual void OnConnected()
+    {
+        isConnected = true;
     }
 }
