@@ -1390,7 +1390,7 @@ MonoBehaviour:
   line: {fileID: 1809364795}
   defaultCornerCount: 5
   defaultDis: 5
-  atLeastDis: 0.5
+  atLeastDis: 0.3
 --- !u!114 &1250350471
 MonoBehaviour:
   m_ObjectHideFlags: 0

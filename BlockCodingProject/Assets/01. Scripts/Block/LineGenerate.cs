@@ -224,6 +224,18 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         connectedHole = null;
     }
 
+    private void LineAnimation()
+    {
+        for (int i = line.positionCount - 1; i >= 0; i--)
+        {
+            if (i - 1 >= 0)
+            {
+                //line.Setline.GetPositions[i - 1];
+
+            }
+        }
+    }
+
     public void AddCorner(Vector3 pos)
     {
         if (defaultCornerCount <= lineCorners.Count) return;
