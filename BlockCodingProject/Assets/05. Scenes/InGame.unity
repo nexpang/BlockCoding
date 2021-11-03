@@ -738,6 +738,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2732255172182182905, guid: 46783e90fea215c499b69acb5023362f, type: 3}
+      propertyPath: m_EffectDistance.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2732255172182182905, guid: 46783e90fea215c499b69acb5023362f, type: 3}
+      propertyPath: m_EffectDistance.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46783e90fea215c499b69acb5023362f, type: 3}
 --- !u!1001 &624775429469138195

@@ -970,7 +970,7 @@ GameObject:
   - component: {fileID: 35667306490163221}
   - component: {fileID: 35667306490163219}
   - component: {fileID: 35667306490163220}
-  - component: {fileID: 35667306490163218}
+  - component: {fileID: 2732255172182182905}
   m_Layer: 5
   m_Name: BlockImage
   m_TagString: Untagged
@@ -1025,7 +1025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3467787228431498309, guid: 7939e783a45b5894fa860d81a3b55ac0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33203bfc21077c94eb5e7c5c68d21cab, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &35667306490163218
+--- !u!114 &2732255172182182905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

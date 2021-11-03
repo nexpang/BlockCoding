@@ -45,7 +45,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             myBlock.OnConnected(connectedHole.myBlock);
             connectedHole.myBlock.OnConnected(myBlock);
-
+            yield return null;
             connectedHole.connectedHole = this;
             line.gameObject.SetActive(true);
             if (!isTouchable)
