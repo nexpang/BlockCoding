@@ -110,6 +110,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             if (GameManager.Instance.lineCircles[i] == this) continue; // 만약 이게 나거나
             if (GameManager.Instance.lineCircles[i].myBlock == this.myBlock) continue; // 블록이 같거나
             if (GameManager.Instance.lineCircles[i].lineType == this.lineType) continue; // 줄 타입이 같다면 넘긴다.
+            if (!GameManager.Instance.lineCircles[i].isTouchable) continue;
 
             Vector3 dis = GameManager.Instance.lineCircles[i].transform.position - lineWayPoints[1];
             if(lowestDis > dis.sqrMagnitude)

@@ -1028,9 +1028,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 35667305132694985, guid: 46783e90fea215c499b69acb5023362f, type: 3}
+      propertyPath: isTouchable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 35667305132694985, guid: 46783e90fea215c499b69acb5023362f, type: 3}
       propertyPath: connectedHole
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7219522002360465735}
     - target: {fileID: 35667305545986610, guid: 46783e90fea215c499b69acb5023362f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
