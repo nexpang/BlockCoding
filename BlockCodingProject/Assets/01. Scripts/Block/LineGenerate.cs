@@ -55,8 +55,8 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 line.endColor = Color.red;
             }
 
-            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 5);
-            lineWayPoints[1] = new Vector3(transform.position.x, transform.position.y, 5);
+            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 0);
+            lineWayPoints[1] = new Vector3(transform.position.x, transform.position.y, 0);
 
             DOTween.To(() => lineWayPoints[1], value =>
             {
@@ -90,7 +90,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // 포지션 설정
         { 
-            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 5);
+            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 0);
             lineWayPoints[1] = GameManager.ScreenToWorldPoint();
 
             Vector3 dir = lineWayPoints[1] - lineWayPoints[0];

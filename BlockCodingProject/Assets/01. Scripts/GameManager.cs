@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public List<LineGenerate> lineCircles = new List<LineGenerate>();
 
+    public GameObject codingCMCam;
+    public GameObject ingameCMCam;
+
     private void Awake()
     {
         if (!Instance)
@@ -16,9 +19,24 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        codingCMCam.SetActive(true);
+        ingameCMCam.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            codingCMCam.SetActive(!codingCMCam.activeSelf);
+            ingameCMCam.SetActive(!ingameCMCam.activeSelf);
+        }
+    }
+
     public static Vector3 ScreenToWorldPoint()
     {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return new Vector3(point.x, point.y, 5);
+        return new Vector3(point.x, point.y, 0);
     }
 }
