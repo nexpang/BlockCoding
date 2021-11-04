@@ -11,14 +11,10 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     [HideInInspector]
     public bool joyStickHold = false;
 
-    public float horizontalRaw = 0;
-    public float verticalRaw = 0;
+    public static float horizontalRaw = 0;
+    public static float verticalRaw = 0;
 
     public Sprite[] joystickes;
-
-    //private float fSqr = 0f;
-    //[SerializeField]
-    //private float radius = 1f;
 
     private Image img;
 
@@ -54,29 +50,29 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
             {
                 //up
                 img.sprite = joystickes[1];
-                horizontalRaw = 1;
-                verticalRaw = 0;
+                horizontalRaw = 0;
+                verticalRaw = 1;
             }
             else if(direct.x< -0.7f && direct.y > -0.7f && direct.y < 0.7f)
             {
                 //left
                 img.sprite = joystickes[3];
-                horizontalRaw = 0;
-                verticalRaw = -1;
+                horizontalRaw = -1;
+                verticalRaw = 0;
             }
             else if (direct.x > -0.7f && direct.y > -0.7f && direct.y < 0.7f)
             {
                 // right
                 img.sprite = joystickes[4];
-                horizontalRaw = 0;
-                verticalRaw = 1;
+                horizontalRaw = 1;
+                verticalRaw = 0;
             }
             else
             {
                 //down
                 img.sprite = joystickes[2];
-                horizontalRaw = -1;
-                verticalRaw = 0;
+                horizontalRaw = 0;
+                verticalRaw = -1;
             }
 
             //print(touchPos);
@@ -96,6 +92,14 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
             //lever.position = (Vector2)transform.position + direct * fSqr;
             
 
+        }
+        else
+        {
+            if (horizontalRaw != 0 || verticalRaw != 0)
+            {
+                horizontalRaw = 0;
+                verticalRaw = 0;
+            }
         }
     }
 
