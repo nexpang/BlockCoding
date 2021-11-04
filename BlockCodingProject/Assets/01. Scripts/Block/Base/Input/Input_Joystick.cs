@@ -15,7 +15,6 @@ public class Input_Joystick : BaseBlockScript
             anim.SetInteger("Horizontal", JoyStickInput.horizontalRaw);
             anim.SetInteger("Vertical", JoyStickInput.verticalRaw);
 
-            anim.SetFloat("AnimationSpeed", JoyStickInput.horizontalRaw == 0 && JoyStickInput.verticalRaw == 0 ? 0 : 1);
         }
 
         childBlock.inGameObj.transform.Translate(joyStickDir * 4 * Time.deltaTime);
