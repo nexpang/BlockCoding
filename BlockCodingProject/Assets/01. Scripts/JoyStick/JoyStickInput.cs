@@ -11,8 +11,8 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
     [HideInInspector]
     public bool joyStickHold = false;
 
-    public static float horizontalRaw = 0;
-    public static float verticalRaw = 0;
+    public static int horizontalRaw = 0;
+    public static int verticalRaw = 0;
 
     public Sprite[] joystickes;
 
