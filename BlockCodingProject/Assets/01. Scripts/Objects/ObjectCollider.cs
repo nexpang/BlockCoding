@@ -47,9 +47,4 @@ public class ObjectCollider : MonoBehaviour
             }
         }
     }
-
-    private void Update()
-    {
-        print(gameObject.name + ": " + collisionList.Count);
-    }
 }

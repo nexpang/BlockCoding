@@ -167,7 +167,7 @@ CompositeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -177,52 +177,32 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1747016619}
     m_ColliderPaths:
-    - - X: 10000100
-        Y: -624975
-      - X: 10000076
-        Y: -624931
-      - X: 9062543
-        Y: 91
-      - X: 9062515
-        Y: 100
-      - X: 624972
-        Y: 100
-      - X: 624923
-        Y: 70
-      - X: 100
-        Y: -1249576
-      - X: 100
-        Y: -624975
-      - X: 76
-        Y: -624931
-      - X: -937457
-        Y: 91
-      - X: -937485
-        Y: 100
-      - X: -9375028
-        Y: 100
-      - X: -9375077
-        Y: 70
-      - X: -10000095
-        Y: -1249966
-      - X: -10000100
-        Y: -1249988
-      - X: -10000100
-        Y: -9687400
-      - X: 10000100
-        Y: -9687400
+    - - X: -2500000
+        Y: -3437500
+      - X: -7187500
+        Y: -3437500
+      - X: -7187500
+        Y: -9375000
+      - X: -2500000
+        Y: -9375000
+    - - X: 7500000
+        Y: -3437500
+      - X: 2812500
+        Y: -3437500
+      - X: 2812500
+        Y: -9375000
+      - X: 7500000
+        Y: -9375000
   m_CompositePaths:
     m_Paths:
-    - - {x: 0.9999807, y: -0.96874}
-      - {x: 0.9999958, y: -0.0624853}
-      - {x: 0.9062438, y: 0.00001}
-      - {x: 0.0624847, y: -0.0000079}
-      - {x: 0.00001, y: -0.124785304}
-      - {x: -0.0000042, y: -0.0624853}
-      - {x: -0.0937562, y: 0.00001}
-      - {x: -0.9375153, y: -0.0000079}
-      - {x: -1.00001, y: -0.12500471}
-      - {x: -0.9999807, y: -0.96874}
+    - - {x: 0.74997073, y: -0.9375}
+      - {x: 0.74997073, y: -0.34375}
+      - {x: 0.28125, y: -0.3437793}
+      - {x: 0.2812793, y: -0.9375}
+    - - {x: -0.2500293, y: -0.9375}
+      - {x: -0.2500293, y: -0.34375}
+      - {x: -0.71875, y: -0.3437793}
+      - {x: -0.71872073, y: -0.9375}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &8139736
@@ -233,19 +213,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8139733}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8139737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,19 +335,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51076056}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &51076060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,7 +1526,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -3219035741384111448, guid: ab507c44284a19f4d9c1bf0faa7cf3b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1615,7 +1595,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.43414968}
+  m_Size: {x: 0.5, y: 0.43414968}
   m_EdgeRadius: 0
 --- !u!50 &934433035
 Rigidbody2D:
