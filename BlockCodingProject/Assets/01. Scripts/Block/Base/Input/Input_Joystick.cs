@@ -8,16 +8,18 @@ public class Input_Joystick : BaseBlockScript
     {
         Vector2 joyStickDir = new Vector2(JoyStickInput.horizontalRaw, JoyStickInput.verticalRaw);
 
-        Animator anim = childBlock.inGameObj.GetComponent<Animator>();
-
-        if (anim != null)
+        if (childBlock.inGameObj != null)
         {
-            anim.SetInteger("Horizontal", JoyStickInput.horizontalRaw);
-            anim.SetInteger("Vertical", JoyStickInput.verticalRaw);
+            Animator anim = childBlock.inGameObj.GetComponent<Animator>();
 
+            if (anim != null)
+            {
+                anim.SetInteger("Horizontal", JoyStickInput.horizontalRaw);
+                anim.SetInteger("Vertical", JoyStickInput.verticalRaw);
+
+            }
+
+            childBlock.inGameObj.transform.Translate(joyStickDir * 4 * Time.deltaTime);
         }
-
-        childBlock.inGameObj.transform.Translate(joyStickDir * 4 * Time.deltaTime);
-        //Debug.Log(childBlock.inGameObj.name + "가 이동한다고");
     }
 }

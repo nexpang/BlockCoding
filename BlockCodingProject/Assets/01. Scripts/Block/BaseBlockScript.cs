@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BaseBlockScript : BlockScript
 {
+    public bool isFixedUpdate = false;
     public LineGenerate output;
 
     [HideInInspector]
@@ -20,7 +21,8 @@ public class BaseBlockScript : BlockScript
         childBlock = output.connectedHole.myBlock.GetComponent<ChildBlockScript>();
         if(childBlock != null)
         {
-            childBlock.onPlay = BlockAbility;
+            if(isFixedUpdate) childBlock.onFixedPlay = BlockAbility;
+            else childBlock.onPlay = BlockAbility;
         }
     }
 
@@ -29,7 +31,8 @@ public class BaseBlockScript : BlockScript
         base.OnDisconnected(disconnectedBy);
         if (childBlock != null)
         {
-            childBlock.onPlay = null;
+            if (isFixedUpdate) childBlock.onFixedPlay = null;
+            else childBlock.onPlay = null;
         }
     }
 

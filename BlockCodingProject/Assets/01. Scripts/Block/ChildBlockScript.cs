@@ -7,7 +7,8 @@ public class ChildBlockScript : BlockScript
 {
     public GameObject inGameObj;
     public LineGenerate input;
-    public Action onPlay;
+    public Action onPlay = null;
+    public Action onFixedPlay = null;
 
     private void Awake()
     {
@@ -19,6 +20,14 @@ public class ChildBlockScript : BlockScript
         if(onPlay != null)
         {
             onPlay();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (onFixedPlay != null)
+        {
+            onFixedPlay();
         }
     }
 }

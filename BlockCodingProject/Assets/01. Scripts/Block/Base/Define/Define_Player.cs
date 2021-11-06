@@ -13,7 +13,19 @@ public class Define_Player : BaseBlockScript
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
 
         defined_Player.Add(child.inGameObj);
-        print(defined_Player.Count + " " + defined_Player[0]);
+
+        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+        if (coll != null)
+        {
+            for(int i = 0; i<coll.collisionList.Count;i++)
+            {
+                ObjectCollider item_coll = coll.collisionList[i].GetComponent<ObjectCollider>();
+                if (item_coll != null)
+                {
+                    item_coll.ActionPlay();
+                }
+            }
+        }
     }
 
     public override void OnDisconnected(BlockScript disconnectedBy)
@@ -22,6 +34,5 @@ public class Define_Player : BaseBlockScript
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
         defined_Player.Remove(child.inGameObj);
-        print(defined_Player.Count);
     }
 }
