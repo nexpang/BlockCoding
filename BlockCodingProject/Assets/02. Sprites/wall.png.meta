@@ -26,6 +26,12 @@ TextureImporter:
   - first:
       213: -7850380311542539340
     second: wall_7
+  - first:
+      213: 6356908062157346430
+    second: wall_8
+  - first:
+      213: -4115494802581380263
+    second: wall_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -142,10 +148,10 @@ TextureImporter:
       name: wall_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 68
-        width: 34
-        height: 34
+        x: 1
+        y: 103
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,10 +169,10 @@ TextureImporter:
       name: wall_1
       rect:
         serializedVersion: 2
-        x: 34
-        y: 68
-        width: 34
-        height: 34
+        x: 35
+        y: 103
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +190,10 @@ TextureImporter:
       name: wall_2
       rect:
         serializedVersion: 2
-        x: 68
-        y: 68
-        width: 34
-        height: 34
+        x: 69
+        y: 103
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +211,10 @@ TextureImporter:
       name: wall_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 34
-        width: 34
-        height: 34
+        x: 1
+        y: 69
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +232,10 @@ TextureImporter:
       name: wall_4
       rect:
         serializedVersion: 2
-        x: 34
-        y: 34
-        width: 34
-        height: 34
+        x: 35
+        y: 69
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +253,10 @@ TextureImporter:
       name: wall_5
       rect:
         serializedVersion: 2
-        x: 68
-        y: 34
-        width: 34
-        height: 34
+        x: 69
+        y: 69
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +274,10 @@ TextureImporter:
       name: wall_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 34
-        height: 34
+        x: 1
+        y: 35
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +295,10 @@ TextureImporter:
       name: wall_7
       rect:
         serializedVersion: 2
-        x: 34
-        y: 0
-        width: 34
-        height: 34
+        x: 35
+        y: 35
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,6 +308,48 @@ TextureImporter:
       bones: []
       spriteID: 4bb59c223b8dd0390800000000000000
       internalID: -7850380311542539340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_8
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 35
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7694b2c336483850800000000000000
+      internalID: 6356908062157346430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wall_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 953ab292843d2e6c0800000000000000
+      internalID: -4115494802581380263
       vertices: []
       indices: 
       edges: []

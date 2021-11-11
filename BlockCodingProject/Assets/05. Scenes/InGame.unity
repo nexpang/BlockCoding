@@ -297,6 +297,18 @@ CompositeCollider2D:
         Y: 20312500
       - X: -49375000
         Y: 20312500
+      - X: -49687400
+        Y: 20000100
+      - X: -49687520
+        Y: 20000100
+      - X: -49687557
+        Y: 20000085
+      - X: -50000085
+        Y: 19687557
+      - X: -50000100
+        Y: 19687520
+      - X: -50000100
+        Y: 19687400
       - X: -50312500
         Y: 19375000
       - X: -50312500
@@ -1283,7 +1295,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 393061620}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1410922946}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MovingPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &393061620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1627,7 +1651,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 765520753}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1410922946}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MovingPanel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &765520753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2119,7 +2155,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -2368,7 +2404,7 @@ Tilemap:
   - first: {x: 4, y: 1, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 4
+      m_TileIndex: 6
       m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
@@ -2385,12 +2421,12 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 590268ecfbb6162438c2c8096f13deed, type: 2}
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 50df93f46ea617e46b3ef7ba50fb8074, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 7a3177bd7499e5342aca311ef127cc22, type: 2}
-  - m_RefCount: 1
-    m_Data: {fileID: 11400000, guid: 0202a9764a378aa4da9fea13025472bc, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 1ef42452f5afee042b3263904bee7ea1, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 67ab1750fb21c6c4295a8d098303cf25, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 16
     m_Data: {fileID: -5107677499478342438, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
@@ -2401,9 +2437,9 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: -282635231382982036, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 6451264694632907309, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
+    m_Data: {fileID: 6356908062157346430, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: 2868539044483428322, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
+    m_Data: {fileID: -4115494802581380263, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -5381153769289946764, guid: 45386a444cd5d374da76bf436ce646f9, type: 3}
   m_TileMatrixArray:

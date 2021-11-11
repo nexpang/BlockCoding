@@ -27,11 +27,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            codingCMCam.SetActive(!codingCMCam.activeSelf);
-            ingameCMCam.SetActive(!ingameCMCam.activeSelf);
-        }
+
+    }
+    public void MovingPanel()
+    {
+        codingCMCam.SetActive(!codingCMCam.activeSelf);
+        ingameCMCam.SetActive(!ingameCMCam.activeSelf);
     }
 
     public static Vector3 ScreenToWorldPoint()
