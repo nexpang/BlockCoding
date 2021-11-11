@@ -20,6 +20,9 @@ public class Input_Joystick : BaseBlockScript
             }
 
             childBlock.inGameObj.transform.Translate(joyStickDir * 4 * Time.deltaTime);
+
+
+            childBlock.inGameObj.transform.position = new Vector3(childBlock.inGameObj.transform.position.x, childBlock.inGameObj.transform.position.y, childBlock.inGameObj.transform.position.y);
         }
     }
 }
