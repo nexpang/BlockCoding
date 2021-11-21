@@ -7,7 +7,7 @@ public class Input_Joystick : BaseBlockScript
     public override void BlockAbility()
     {
         Vector2 joyStickDir = new Vector2(JoyStickInput.horizontalRaw, JoyStickInput.verticalRaw);
-
+   
         if (childBlock.inGameObj != null)
         {
             Animator anim = childBlock.inGameObj.GetComponent<Animator>();
@@ -22,7 +22,7 @@ public class Input_Joystick : BaseBlockScript
             childBlock.inGameObj.transform.Translate(joyStickDir * 4 * Time.deltaTime);
 
 
-            childBlock.inGameObj.transform.position = new Vector3(childBlock.inGameObj.transform.position.x, childBlock.inGameObj.transform.position.y, childBlock.inGameObj.transform.position.y);
+            //childBlock.inGameObj.transform.position = new Vector3(childBlock.inGameObj.transform.position.x, childBlock.inGameObj.transform.position.y, childBlock.inGameObj.transform.position.y);
         }
     }
 }

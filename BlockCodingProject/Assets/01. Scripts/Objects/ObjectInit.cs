@@ -7,9 +7,10 @@ public class ObjectInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         foreach (Transform obj in transform.GetComponentsInChildren<Transform>())
         {
             obj.position = new Vector3(obj.position.x, obj.position.y, obj.position.y);
-        }
+        }*/
     }
 }
