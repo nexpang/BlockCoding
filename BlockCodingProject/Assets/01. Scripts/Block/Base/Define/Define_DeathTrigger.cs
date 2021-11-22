@@ -10,7 +10,7 @@ public class Define_DeathTrigger : BaseBlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
-                Destroy(obj);
+                Death(obj);
             }
         }
     }
@@ -19,6 +19,7 @@ public class Define_DeathTrigger : BaseBlockScript
     {
         base.OnConnected(connectedBy);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
+        PlayerDeath(child.inGameObj);
 
         ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
         coll.enterAction = PlayerDeath;
@@ -32,5 +33,10 @@ public class Define_DeathTrigger : BaseBlockScript
 
         ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
         coll.enterAction = null;
+    }
+
+    private void Death(GameObject obj)
+    {
+        Destroy(obj);
     }
 }

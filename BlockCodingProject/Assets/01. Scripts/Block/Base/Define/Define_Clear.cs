@@ -10,7 +10,7 @@ public class Define_Clear : BaseBlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
-                print("클리어");
+                StageClear();
             }
         }
     }
@@ -19,6 +19,7 @@ public class Define_Clear : BaseBlockScript
     {
         base.OnConnected(connectedBy);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
+        PlayerClear(child.inGameObj);
 
         ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
         coll.enterAction = PlayerClear;
@@ -32,5 +33,10 @@ public class Define_Clear : BaseBlockScript
 
         ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
         coll.enterAction = null;
+    }
+
+    public void StageClear()
+    {
+        print("클리어");
     }
 }

@@ -9,6 +9,13 @@ public class ObjectCollider : MonoBehaviour
     public List<GameObject> collisionList = new List<GameObject>();
     public Action<GameObject> enterAction = null;
 
+    private Collider2D collider;
+
+    private void Awake()
+    {
+        collider = GetComponent<Collider2D>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         collisionList.Add(collision.gameObject);
@@ -46,5 +53,15 @@ public class ObjectCollider : MonoBehaviour
                 enterAction(collisionList[i]);
             }
         }
+    }
+
+    public void SetTrigger()
+    {
+        collider.isTrigger = true;
+    }
+
+    public void SetCollision()
+    {
+        collider.isTrigger = false;
     }
 }
