@@ -17,6 +17,7 @@ public class Define_Player : BaseBlockScript
         ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
         if (coll != null)
         {
+            coll.SetCollision();
             for(int i = 0; i<coll.collisionList.Count;i++)
             {
                 ObjectCollider item_coll = coll.collisionList[i].GetComponent<ObjectCollider>();
@@ -34,5 +35,11 @@ public class Define_Player : BaseBlockScript
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
         defined_Player.Remove(child.inGameObj);
+
+        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+        if(coll != null)
+        {
+            coll.SetTrigger();
+        }
     }
 }
