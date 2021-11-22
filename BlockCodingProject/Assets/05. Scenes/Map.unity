@@ -3469,14 +3469,14 @@ CompositeCollider2D:
   m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
-    - - {x: -0.2500252, y: 0.06249}
-      - {x: -0.2500252, y: 0.87501}
-      - {x: -0.75001, y: 0.8749748}
-      - {x: -0.7499748, y: 0.06249}
-    - - {x: 0.7499748, y: 0.06249}
-      - {x: 0.7499748, y: 0.87501}
-      - {x: 0.24999, y: 0.8749748}
-      - {x: 0.2500252, y: 0.06249}
+    - - {x: 0.74997073, y: 0.0625}
+      - {x: 0.74997073, y: 0.875}
+      - {x: 0.25, y: 0.87497073}
+      - {x: 0.2500293, y: 0.0625}
+    - - {x: -0.2500293, y: 0.0625}
+      - {x: -0.2500293, y: 0.875}
+      - {x: -0.75, y: 0.87497073}
+      - {x: -0.74997073, y: 0.0625}
     - - {x: 0.74997073, y: -0.9375}
       - {x: 0.74997073, y: -0.125}
       - {x: 0.25, y: -0.1250293}
@@ -5523,7 +5523,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 35667305707024319, guid: 46783e90fea215c499b69acb5023362f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 212.00002
+      value: 381
       objectReference: {fileID: 0}
     - target: {fileID: 35667305707024319, guid: 46783e90fea215c499b69acb5023362f, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7553,7 +7553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1488787323361896148, guid: 9062726ac824d9c42ac2dcae70a91e57, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 697
+      value: 698
       objectReference: {fileID: 0}
     - target: {fileID: 1488787323361896148, guid: 9062726ac824d9c42ac2dcae70a91e57, type: 3}
       propertyPath: m_AnchoredPosition.y
