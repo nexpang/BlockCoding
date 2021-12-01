@@ -24,6 +24,8 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private int lowestDisCircle = -1;
     private Outline outline;
 
+
+
     [NonSerialized] public BlockScript myBlock;
 
     void Awake()
@@ -55,14 +57,14 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 line.endColor = Color.red;
             }
 
-            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 0);
-            lineWayPoints[1] = new Vector3(transform.position.x, transform.position.y, 0);
+            lineWayPoints[0] = Vector3.zero;
+            lineWayPoints[1] = Vector3.zero;
 
             DOTween.To(() => lineWayPoints[1], value =>
             {
                 lineWayPoints[1] = value;
                 line.SetPositions(lineWayPoints);
-            }, connectedHole.transform.position, 1);
+            }, (connectedHole.transform.position - transform.position) * GameManager.CanvasScale, 1);
         }
     }
 
@@ -89,12 +91,12 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (!isTouchable) return;
 
         // 포지션 설정
-        { 
-            lineWayPoints[0] = new Vector3(transform.position.x, transform.position.y, 0);
-            lineWayPoints[1] = GameManager.ScreenToWorldPoint();
+        {
+            lineWayPoints[0] = Vector3.zero;
+            lineWayPoints[1] = GameManager.ScreenToWorldPoint() - (transform.position * GameManager.CanvasScale);
 
             Vector3 dir = lineWayPoints[1] - lineWayPoints[0];
-            dir = Vector3.ClampMagnitude(dir, 5);
+            dir = Vector3.ClampMagnitude(dir, 5 * GameManager.canvasScaleValue);
 
             lineWayPoints[1] = lineWayPoints[0] + dir;
 
@@ -103,7 +105,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         lowestDis = 10000;
         lowestDisCircle = -1;
-        for(int i = 0;i< GameManager.Instance.lineCircles.Count;i++)
+        for(int i = 0;i < GameManager.Instance.lineCircles.Count;i++)
         {
             GameManager.Instance.lineCircles[i].outline.enabled = false;
 
@@ -112,14 +114,13 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             if (GameManager.Instance.lineCircles[i].lineType == this.lineType) continue; // 줄 타입이 같다면 넘긴다.
             if (!GameManager.Instance.lineCircles[i].isTouchable) continue;
 
-            Vector3 dis = GameManager.Instance.lineCircles[i].transform.position - lineWayPoints[1];
+            Vector3 dis = GameManager.Instance.lineCircles[i].transform.position - (lineWayPoints[1] + (transform.position * GameManager.CanvasScale)) / GameManager.CanvasScale;
             if(lowestDis > dis.sqrMagnitude)
             {
                 lowestDis = dis.sqrMagnitude;
                 lowestDisCircle = i;
             }
         }
-        
 
         if (lowestDisCircle != -1)
         {
@@ -147,7 +148,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 GameManager.Instance.lineCircles[lowestDisCircle].connectedHole = this;
                 connectedHole.myBlock.OnConnected(myBlock);
 
-                lineWayPoints[1] = GameManager.Instance.lineCircles[lowestDisCircle].transform.position;
+                lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * GameManager.CanvasScale;
                 GameManager.Instance.lineCircles[lowestDisCircle].outline.enabled = false;
                 line.SetPositions(lineWayPoints);
             }

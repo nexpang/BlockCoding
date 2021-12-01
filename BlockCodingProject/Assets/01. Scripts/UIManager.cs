@@ -8,7 +8,10 @@ public class UIManager : MonoBehaviour
     private static UIManager Instance;
 
     public Slider zoomSlider;
-    private const float zoomScale = 10;
+    public Transform blockPanel;
+    private const float zoomScale = 0.5f;
+
+    public static float currentZoomValue = 1f;
 
     private void Awake()
     {
@@ -20,12 +23,18 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        float reverseValue = -zoomSlider.value + 1;
+        currentZoomValue = 0.6f + zoomSlider.value * zoomScale;
+        blockPanel.transform.localScale = new Vector3(currentZoomValue, currentZoomValue, currentZoomValue);
 
-        CameraMove.ZoomCam(3f + reverseValue * zoomScale);
         zoomSlider.onValueChanged.AddListener(x => {
-            reverseValue = -zoomSlider.value + 1;
-            CameraMove.ZoomCam(3f + reverseValue * zoomScale);
+            currentZoomValue = 0.6f + zoomSlider.value * zoomScale;
+            blockPanel.transform.localScale = new Vector3(currentZoomValue, currentZoomValue, currentZoomValue);
         });
+
+    }
+    private void Update()
+    {
+        
+    print(blockPanel.transform.lossyScale.x);
     }
 }
