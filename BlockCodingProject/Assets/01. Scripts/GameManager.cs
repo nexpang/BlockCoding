@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
 
         if (moveToCoding)
         {
+            UIManager.ClickBlock(true);
             DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1).OnComplete(() =>
             {
                 foreach (LineRenderer item in enabledLines)
@@ -56,12 +57,13 @@ public class GameManager : MonoBehaviour
                 }
                 enabledLines = null;
                 isMovingTab = false;
+                UIManager.ClickBlock(false);
             });
         }
         else
         {
             enabledLines = FindObjectsOfType<LineRenderer>();
-            foreach(LineRenderer item in enabledLines)
+            foreach (LineRenderer item in enabledLines)
             {
                 item.gameObject.SetActive(false);
             }

@@ -7,8 +7,11 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public GameObject clickBlockPanel;
+
     public Slider zoomSlider;
     public Transform blockPanel;
+
     private const float zoomScale = 0.5f;
 
     public static float currentZoomValue = 1f;
@@ -31,5 +34,10 @@ public class UIManager : MonoBehaviour
             blockPanel.transform.localScale = new Vector3(currentZoomValue, currentZoomValue, currentZoomValue);
         });
 
+    }
+
+    public static void ClickBlock(bool value)
+    {
+        Instance.clickBlockPanel.SetActive(value);
     }
 }
