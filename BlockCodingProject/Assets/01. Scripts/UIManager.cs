@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    private static UIManager Instance;
+    public static UIManager Instance;
 
     public Slider zoomSlider;
     public Transform blockPanel;

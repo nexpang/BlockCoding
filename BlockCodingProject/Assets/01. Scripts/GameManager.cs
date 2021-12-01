@@ -8,12 +8,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<LineGenerate> lineCircles = new List<LineGenerate>();
-    public List<LineRenderer> enabledLines = new List<LineRenderer>();
+    public LineRenderer[] enabledLines;
 
     public RectTransform codingPanel;
     public RectTransform ingameCanvas;
 
     public static float canvasScaleValue;
+    private bool isMovingTab = false;
 
     public static float CanvasScale { get { return  canvasScaleValue / UIManager.currentZoomValue; } }
 
@@ -41,13 +42,33 @@ public class GameManager : MonoBehaviour
 
     public void MovingPanel(bool moveToCoding)
     {
+        if (isMovingTab) return;
+
+        isMovingTab = true;
+
         if (moveToCoding)
         {
-            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1);
+            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1).OnComplete(() =>
+            {
+                foreach (LineRenderer item in enabledLines)
+                {
+                    item.gameObject.SetActive(true);
+                }
+                enabledLines = null;
+                isMovingTab = false;
+            });
         }
         else
         {
-            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(1920, 0), 1);
+            enabledLines = FindObjectsOfType<LineRenderer>();
+            foreach(LineRenderer item in enabledLines)
+            {
+                item.gameObject.SetActive(false);
+            }
+            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(1920, 0), 1).OnComplete(() =>
+            {
+                isMovingTab = false;
+            });
         }
     }
 

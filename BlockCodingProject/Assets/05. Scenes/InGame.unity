@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.4221431, g: 0.6171868, b: 0.9245283, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -6195,6 +6195,7 @@ GameObject:
   - component: {fileID: 1410922946}
   - component: {fileID: 1410922948}
   - component: {fileID: 1410922949}
+  - component: {fileID: 1410922950}
   m_Layer: 0
   m_Name: Management
   m_TagString: Untagged
@@ -6258,6 +6259,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zoomSlider: {fileID: 1686574311}
   blockPanel: {fileID: 543187310}
+--- !u!114 &1410922950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410922945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a588a88c69ed1ab47af824a186129e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1488416299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8197,7 +8210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.21960786, g: 0.4784314, b: 0.8862746, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
