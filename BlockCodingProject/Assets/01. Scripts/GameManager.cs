@@ -2,14 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<LineGenerate> lineCircles = new List<LineGenerate>();
 
-    public GameObject codingCMCam;
-    public GameObject ingameCMCam;
+    public RectTransform codingPanel;
 
     private void Awake()
     {
@@ -17,12 +17,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-    }
-
-    private void Start()
-    {
-        codingCMCam.SetActive(true);
-        ingameCMCam.SetActive(false);
     }
 
     private void Update()
@@ -36,8 +30,7 @@ public class GameManager : MonoBehaviour
     }
     public void MovingPanel()
     {
-        codingCMCam.SetActive(!codingCMCam.activeSelf);
-        ingameCMCam.SetActive(!ingameCMCam.activeSelf);
+        codingPanel.offsetMin = new Vector2(1920, 0);
     }
 
     public static Vector3 ScreenToWorldPoint()

@@ -7,7 +7,8 @@ public class UIManager : MonoBehaviour
 {
     private static UIManager Instance;
 
-    public SpriteRenderer rangeCircle;
+    public Slider zoomSlider;
+    private const float zoomScale = 10;
 
     private void Awake()
     {
@@ -17,16 +18,14 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public static void ShowCircleRange(Vector2 pos, float remainDis)
+    private void Start()
     {
-        Instance.rangeCircle.gameObject.SetActive(true);
-        Instance.rangeCircle.transform.position = pos;
-        Instance.rangeCircle.size = new Vector2(remainDis * 2, remainDis * 2);
-        Instance.rangeCircle.GetComponent<CircleCollider2D>().radius = remainDis;
-    }
+        float reverseValue = -zoomSlider.value + 1;
 
-    public static void DisabledCircleRange()
-    {
-        Instance.rangeCircle.gameObject.SetActive(false);
+        CameraMove.ZoomCam(3f + reverseValue * zoomScale);
+        zoomSlider.onValueChanged.AddListener(x => {
+            reverseValue = -zoomSlider.value + 1;
+            CameraMove.ZoomCam(3f + reverseValue * zoomScale);
+        });
     }
 }
