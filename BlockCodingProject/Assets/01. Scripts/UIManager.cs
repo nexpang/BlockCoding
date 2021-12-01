@@ -32,9 +32,4 @@ public class UIManager : MonoBehaviour
         });
 
     }
-    private void Update()
-    {
-        
-    print(blockPanel.transform.lossyScale.x);
-    }
 }

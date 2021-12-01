@@ -37,13 +37,18 @@ public class GameManager : MonoBehaviour
             MovingPanel(toggle);
         }
 #endif
-
-        print(CanvasScale);
     }
 
     public void MovingPanel(bool moveToCoding)
     {
-        codingPanel.offsetMin = new Vector2(1920, 0);
+        if (moveToCoding)
+        {
+            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1);
+        }
+        else
+        {
+            DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(1920, 0), 1);
+        }
     }
 
     public static Vector3 ScreenToWorldPoint()
