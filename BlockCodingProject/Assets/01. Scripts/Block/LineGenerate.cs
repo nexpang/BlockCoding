@@ -24,7 +24,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private int lowestDisCircle = -1;
     private Outline outline;
 
-
+    private bool isCantConnect = false;
 
     [NonSerialized] public BlockScript myBlock;
 
@@ -96,12 +96,39 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             lineWayPoints[1] = GameManager.ScreenToWorldPoint() - (transform.position * GameManager.CanvasScale);
 
             Vector3 dir = lineWayPoints[1] - lineWayPoints[0];
+
+            Vector3 worldDir = GameManager.ScreenToWorldPoint(false) - transform.position;
+
             dir = Vector3.ClampMagnitude(dir, 5 * GameManager.canvasScaleValue);
+            worldDir = Vector3.ClampMagnitude(worldDir, 5);
+
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, worldDir, worldDir.magnitude, 1 << LayerMask.NameToLayer("Wall"));
+            Debug.DrawLine(lineWayPoints[0], GameManager.ScreenToWorldPoint(false));
+
+            isCantConnect = hit;
+            if (hit)
+            {
+                if (!UIManager.Instance.wallBlockEffect.activeSelf)
+                {
+                    UIManager.Instance.wallBlockEffect.SetActive(true);
+                }
+                UIManager.Instance.wallBlockEffect.transform.position = hit.point;
+                Debug.Log("º®¿¡ ´êÀ½");
+            }
+            else
+            {
+                if (UIManager.Instance.wallBlockEffect.activeSelf)
+                {
+                    UIManager.Instance.wallBlockEffect.SetActive(false);
+                }
+            }
 
             lineWayPoints[1] = lineWayPoints[0] + dir;
 
             line.SetPositions(lineWayPoints);
         }
+
+        if (isCantConnect) return;
 
         lowestDis = 10000;
         lowestDisCircle = -1;
@@ -157,6 +184,8 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             line.gameObject.SetActive(false);
         }
+
+        UIManager.Instance.wallBlockEffect.SetActive(false);
     }
 
     public void DisconnetLineAll()

@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Slider zoomSlider;
     public Transform blockPanel;
 
+    public GameObject wallBlockEffect;
+
     private const float zoomScale = 0.5f;
 
     public static float currentZoomValue = 1f;

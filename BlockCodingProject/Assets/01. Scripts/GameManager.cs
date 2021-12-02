@@ -74,9 +74,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static Vector3 ScreenToWorldPoint()
+    public static Vector3 ScreenToWorldPoint(bool isCanvasScale = true)
     {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return new Vector3(point.x, point.y, 0) * CanvasScale;
+        return new Vector3(point.x, point.y, 0) * (isCanvasScale ? CanvasScale : 1);
     }
+
+
 }
