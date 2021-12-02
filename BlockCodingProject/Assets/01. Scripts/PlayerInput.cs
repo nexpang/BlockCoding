@@ -15,11 +15,14 @@ public class PlayerInput : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if (!EventSystem.current.IsPointerOverGameObject())
+            if (GameManager.Instance.gameStatus == GameStatus.CODING)
             {
-                clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                blockPanelPos = UIManager.Instance.blockPanel.position;
-                isDrag = true;
+                if (!EventSystem.current.IsPointerOverGameObject())
+                {
+                    clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    blockPanelPos = UIManager.Instance.blockPanel.position;
+                    isDrag = true;
+                }
             }
         }
 

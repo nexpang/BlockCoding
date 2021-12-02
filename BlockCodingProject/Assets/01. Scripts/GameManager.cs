@@ -4,9 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+public enum GameStatus
+{
+    INGAME,
+    CODING
+}
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public GameStatus gameStatus;
+
     public List<LineGenerate> lineCircles = new List<LineGenerate>();
     public LineRenderer[] enabledLines;
 
@@ -48,6 +58,7 @@ public class GameManager : MonoBehaviour
 
         if (moveToCoding)
         {
+            gameStatus = GameStatus.CODING;
             UIManager.ClickBlock(true);
             DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1).OnComplete(() =>
             {
@@ -62,6 +73,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            gameStatus = GameStatus.INGAME;
             enabledLines = FindObjectsOfType<LineRenderer>();
             foreach (LineRenderer item in enabledLines)
             {

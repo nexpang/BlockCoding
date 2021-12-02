@@ -97,13 +97,12 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
             Vector3 dir = lineWayPoints[1] - lineWayPoints[0];
 
-            Vector3 worldDir = GameManager.ScreenToWorldPoint(false) - transform.position;
+            Vector3 worldDir = GameManager.ScreenToWorldPoint(false) - (transform.position * UIManager.currentZoomValue);
 
             dir = Vector3.ClampMagnitude(dir, 5 * GameManager.canvasScaleValue);
-            worldDir = Vector3.ClampMagnitude(worldDir, 5);
+            worldDir = Vector3.ClampMagnitude(worldDir, 5 * UIManager.currentZoomValue);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, worldDir, worldDir.magnitude, 1 << LayerMask.NameToLayer("Wall"));
-            Debug.DrawLine(lineWayPoints[0], GameManager.ScreenToWorldPoint(false));
 
             isCantConnect = hit;
             if (hit)

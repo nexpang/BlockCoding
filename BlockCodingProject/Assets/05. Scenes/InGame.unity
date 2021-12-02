@@ -6567,6 +6567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00e72f8d460e1c42997e18b743addc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameStatus: 0
   lineCircles: []
   enabledLines: []
   codingPanel: {fileID: 167041185}
