@@ -167,11 +167,12 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 Debug.Log("ºÙÇôÁü : " + GameManager.Instance.lineCircles[lowestDisCircle].gameObject.name);
 
+                GameManager.Instance.lineCircles[lowestDisCircle].DisconnetLineAll();
+                GameManager.Instance.lineCircles[lowestDisCircle].connectedHole = this;
+
                 connectedHole = GameManager.Instance.lineCircles[lowestDisCircle];
                 myBlock.OnConnected(connectedHole.myBlock);
 
-                GameManager.Instance.lineCircles[lowestDisCircle].DisconnetLineAll();
-                GameManager.Instance.lineCircles[lowestDisCircle].connectedHole = this;
                 connectedHole.myBlock.OnConnected(myBlock);
 
                 lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * GameManager.CanvasScale;

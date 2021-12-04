@@ -19,11 +19,13 @@ public class Define_Clear : BaseBlockScript
     {
         base.OnConnected(connectedBy);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
-        PlayerClear(child.inGameObj);
-
-        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-        coll.enterAction = PlayerClear;
-        coll.ActionPlay();
+        if (child != null)
+        {
+            PlayerClear(child.inGameObj);
+            ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+            coll.enterAction = PlayerClear;
+            coll.ActionPlay();
+        }
     }
 
     public override void OnDisconnected(BlockScript disconnectedBy)
@@ -31,8 +33,11 @@ public class Define_Clear : BaseBlockScript
         base.OnDisconnected(disconnectedBy);
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
-        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-        coll.enterAction = null;
+        if (child != null)
+        {
+            ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+            coll.enterAction = null;
+        }
     }
 
     public void StageClear()

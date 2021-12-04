@@ -19,11 +19,15 @@ public class Define_DeathTrigger : BaseBlockScript
     {
         base.OnConnected(connectedBy);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
-        PlayerDeath(child.inGameObj);
 
-        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-        coll.enterAction = PlayerDeath;
-        coll.ActionPlay();
+        if (child != null)
+        {
+            PlayerDeath(child.inGameObj);
+
+            ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+            coll.enterAction = PlayerDeath;
+            coll.ActionPlay();
+        }
     }
 
     public override void OnDisconnected(BlockScript disconnectedBy)
@@ -31,8 +35,11 @@ public class Define_DeathTrigger : BaseBlockScript
         base.OnDisconnected(disconnectedBy);
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
-        ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-        coll.enterAction = null;
+        if (child != null)
+        {
+            ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
+            coll.enterAction = null;
+        }
     }
 
     private void Death(GameObject obj)
