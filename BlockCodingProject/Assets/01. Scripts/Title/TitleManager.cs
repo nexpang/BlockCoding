@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class TitleManager : MonoBehaviour
 {
@@ -15,13 +16,18 @@ public class TitleManager : MonoBehaviour
 
     public GameObject logoText;
 
+    [Header("Buttons")]
+    public Button startBtn; 
+    public Button settingBtn; 
+    public Button leaveBtn; 
+
     private void Awake()
     {
         if(!Instance)
         {
             Instance = this;
         }
-        logoText.SetActive(false);
+        
         startPanel.alpha = 1;
         startPanel.blocksRaycasts = true;
         startPanel.interactable = true;
@@ -30,19 +36,78 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         CanvasSync.ScaleEdit(titleCanvas);
+
+        logoText.SetActive(false);
+
+        startBtn.gameObject.SetActive(false);
+        settingBtn.gameObject.SetActive(false);
+        leaveBtn.gameObject.SetActive(false);
+
+        startBtn.transform.localScale = Vector3.zero;
+        settingBtn.transform.localScale = Vector3.zero;
+        leaveBtn.transform.localScale = Vector3.zero;
+
+
+        startBtn.onClick.AddListener(() =>
+        {
+
+        });
+
+        settingBtn.onClick.AddListener(() =>
+        {
+
+        });
+
+        leaveBtn.onClick.AddListener(() =>
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false; //play모드를 false로.
+#else
+                    Application.Quit();
+#endif
+        });
     }
 
     public void MainPanelStart()
     {
-        startPanel.alpha = 0;
-        startPanel.blocksRaycasts = false;
-        startPanel.interactable = false;
-
-        leftLine.startColor = Color.black;
-        leftLine.endColor = Color.black;
-        rightLine.startColor = Color.black;
-        rightLine.endColor = Color.black;
-
+        Sequence seq = DOTween.Sequence();
         logoText.SetActive(true);
+        logoText.transform.localScale = new Vector3(1, 0, 1);
+        Color lineColor = Color.white;
+
+        seq.Append(
+            logoText.transform.DOScaleY(1, 0.5f)
+        );
+        seq.AppendInterval(2);
+        seq.AppendCallback(() =>
+        {
+            startPanel.alpha = 0;
+            startPanel.blocksRaycasts = false;
+            startPanel.interactable = false;
+
+            DOTween.To(() => lineColor, value =>
+            {
+                leftLine.startColor = value;
+                leftLine.endColor = value;
+                rightLine.startColor = value;
+                rightLine.endColor = value;
+            }, Color.black, 1);
+        });
+
+        seq.AppendInterval(1);
+        seq.Append(startBtn.transform.DOScale(1, 0.5f).OnStart(() =>
+        {
+            startBtn.gameObject.SetActive(true);
+        }));
+        seq.Append(settingBtn.transform.DOScale(1, 0.5f).OnStart(() =>
+        {
+            settingBtn.gameObject.SetActive(true);
+        }));
+        seq.Append(leaveBtn.transform.DOScale(1, 0.5f).OnStart(() =>
+        {
+            leaveBtn.gameObject.SetActive(true);
+        }));
+
+
     }
 }
