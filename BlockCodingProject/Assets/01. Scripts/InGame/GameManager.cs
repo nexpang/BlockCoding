@@ -23,10 +23,7 @@ public class GameManager : MonoBehaviour
     public RectTransform codingPanel;
     public RectTransform ingameCanvas;
 
-    public static float canvasScaleValue;
     private bool isMovingTab = false;
-
-    public static float CanvasScale { get { return  canvasScaleValue / UIManager.currentZoomValue; } }
 
     private void Awake()
     {
@@ -35,19 +32,7 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        canvasScaleValue = 1 / ingameCanvas.transform.localScale.x;
-    }
-
-    private bool toggle = false;
-    private void Update()
-    {
-#if UNITY_EDITOR
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            toggle = !toggle;
-            MovingPanel(toggle);
-        }
-#endif
+        CanvasSync.ScaleEdit(ingameCanvas);
     }
 
     public void MovingPanel(bool moveToCoding)
@@ -89,7 +74,7 @@ public class GameManager : MonoBehaviour
     public static Vector3 ScreenToWorldPoint(bool isCanvasScale = true)
     {
         Vector3 point = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return new Vector3(point.x, point.y, 0) * (isCanvasScale ? CanvasScale : 1);
+        return new Vector3(point.x, point.y, 0) * (isCanvasScale ? CanvasSync.CanvasScale : 1);
     }
 
 

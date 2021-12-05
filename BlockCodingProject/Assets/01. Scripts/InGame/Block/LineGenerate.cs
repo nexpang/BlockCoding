@@ -64,7 +64,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 lineWayPoints[1] = value;
                 line.SetPositions(lineWayPoints);
-            }, (connectedHole.transform.position - transform.position) * GameManager.CanvasScale, 1);
+            }, (connectedHole.transform.position - transform.position) * CanvasSync.CanvasScale, 1);
         }
     }
 
@@ -93,13 +93,13 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         // 포지션 설정
         {
             lineWayPoints[0] = Vector3.zero;
-            lineWayPoints[1] = GameManager.ScreenToWorldPoint() - (transform.position * GameManager.CanvasScale);
+            lineWayPoints[1] = GameManager.ScreenToWorldPoint() - (transform.position * CanvasSync.CanvasScale);
 
             Vector3 dir = lineWayPoints[1] - lineWayPoints[0];
 
             Vector3 worldDir = GameManager.ScreenToWorldPoint(false) - (transform.position * UIManager.currentZoomValue);
 
-            dir = Vector3.ClampMagnitude(dir, 5 * GameManager.canvasScaleValue);
+            dir = Vector3.ClampMagnitude(dir, 5 * CanvasSync.canvasScaleValue);
             worldDir = Vector3.ClampMagnitude(worldDir, 5 * UIManager.currentZoomValue);
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position, worldDir, worldDir.magnitude, 1 << LayerMask.NameToLayer("Wall"));
@@ -140,7 +140,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             if (GameManager.Instance.lineCircles[i].lineType == this.lineType) continue; // 줄 타입이 같다면 넘긴다.
             if (!GameManager.Instance.lineCircles[i].isTouchable) continue;
 
-            Vector3 dis = GameManager.Instance.lineCircles[i].transform.position - (lineWayPoints[1] + (transform.position * GameManager.CanvasScale)) / GameManager.CanvasScale;
+            Vector3 dis = GameManager.Instance.lineCircles[i].transform.position - (lineWayPoints[1] + (transform.position * CanvasSync.CanvasScale)) / CanvasSync.CanvasScale;
             if(lowestDis > dis.sqrMagnitude)
             {
                 lowestDis = dis.sqrMagnitude;
@@ -170,12 +170,15 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 GameManager.Instance.lineCircles[lowestDisCircle].DisconnetLineAll();
                 GameManager.Instance.lineCircles[lowestDisCircle].connectedHole = this;
 
+                Effect_Connect effect = PoolManager.GetItem<Effect_Connect>();
+                effect.transform.position = GameManager.Instance.lineCircles[lowestDisCircle].transform.position;
+
                 connectedHole = GameManager.Instance.lineCircles[lowestDisCircle];
                 myBlock.OnConnected(connectedHole.myBlock);
 
                 connectedHole.myBlock.OnConnected(myBlock);
 
-                lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * GameManager.CanvasScale;
+                lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * CanvasSync.CanvasScale;
                 GameManager.Instance.lineCircles[lowestDisCircle].outline.enabled = false;
                 line.SetPositions(lineWayPoints);
             }

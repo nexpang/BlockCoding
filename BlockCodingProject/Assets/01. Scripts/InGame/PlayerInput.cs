@@ -11,6 +11,9 @@ public class PlayerInput : MonoBehaviour
 
     private Vector3 blockPanelPos;
 
+    public Vector2 blockPanelMin;
+    public Vector2 blockPanelMax;
+
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
@@ -39,7 +42,13 @@ public class PlayerInput : MonoBehaviour
 
                 Vector3 dir = movePos - clickPos;
 
-                UIManager.Instance.blockPanel.position = blockPanelPos + dir;
+                Vector3 blockPos = UIManager.Instance.blockPanel.position;
+
+                blockPos = blockPanelPos + dir;
+                blockPos.x = Mathf.Clamp(blockPos.x, blockPanelMin.x, blockPanelMax.x);
+                blockPos.y = Mathf.Clamp(blockPos.y, blockPanelMin.y, blockPanelMax.y);
+
+                UIManager.Instance.blockPanel.position = blockPos;
             }
         }
     }

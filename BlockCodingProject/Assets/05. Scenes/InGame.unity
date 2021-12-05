@@ -6580,7 +6580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b00e72f8d460e1c42997e18b743addc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameStatus: 0
+  gameStatus: 1
   lineCircles: []
   enabledLines: []
   codingPanel: {fileID: 167041185}
@@ -6612,6 +6612,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627815c3a8b70864d907d26879367b80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearEffectPrefab: {fileID: 5358215348884614580, guid: 0ef1831315e6de7429e88b26bcce5e7f, type: 3}
+  connectEffectPrefab: {fileID: 5358215348884614580, guid: f27b80a788e2a764495a08d0b54f3bc9, type: 3}
 --- !u!114 &1410922949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6640,6 +6642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a588a88c69ed1ab47af824a186129e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockPanelMin: {x: -10, y: -5}
+  blockPanelMax: {x: 10, y: 5}
 --- !u!1001 &1488416299
 PrefabInstance:
   m_ObjectHideFlags: 0
