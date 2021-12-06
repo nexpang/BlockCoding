@@ -25,6 +25,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Outline outline;
 
     private bool isCantConnect = false;
+    private bool isConnetReady = false;
 
     [NonSerialized] public BlockScript myBlock;
 
@@ -42,13 +43,13 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     IEnumerator SetLineStart()
     {
+        if (connectedHole != null) isConnetReady = true;
         yield return new WaitForSecondsRealtime(0.1f);
-        if (connectedHole != null)
+        if (isConnetReady)
         {
+            connectedHole.connectedHole = this;
             myBlock.OnConnected(connectedHole.myBlock);
             connectedHole.myBlock.OnConnected(myBlock);
-            yield return null;
-            connectedHole.connectedHole = this;
             line.gameObject.SetActive(true);
             if (!isTouchable)
             {

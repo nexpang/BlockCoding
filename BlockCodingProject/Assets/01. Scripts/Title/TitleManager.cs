@@ -10,6 +10,8 @@ public class TitleManager : MonoBehaviour
 
     public RectTransform titleCanvas;
     public CanvasGroup startPanel;
+    public CanvasGroup stagePanel;
+    public RectTransform stageBlock;
 
     public LineRenderer leftLine;
     public LineRenderer rightLine;
@@ -50,7 +52,10 @@ public class TitleManager : MonoBehaviour
 
         startBtn.onClick.AddListener(() =>
         {
-
+            stagePanel.alpha = 1;
+            stagePanel.interactable = true;
+            stagePanel.blocksRaycasts = true;
+            stageBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
         });
 
         settingBtn.onClick.AddListener(() =>
