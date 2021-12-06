@@ -47,6 +47,6 @@ public class Define_DeathTrigger : BaseBlockScript
 
     private void Death(GameObject obj)
     {
-        Destroy(obj);
+        obj.SetActive(false);
     }
 }

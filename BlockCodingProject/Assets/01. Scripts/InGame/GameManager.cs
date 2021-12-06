@@ -23,7 +23,12 @@ public class GameManager : MonoBehaviour
     public RectTransform codingPanel;
     public RectTransform ingameCanvas;
 
+    [Header("Clear")]
+    public RectTransform clearPanel;
+    public ParticleSystem clearParticle;
+
     private bool isMovingTab = false;
+    public bool isClear { get; private set; } = false;
 
     private void Awake()
     {
@@ -77,5 +82,10 @@ public class GameManager : MonoBehaviour
         return new Vector3(point.x, point.y, 0) * (isCanvasScale ? CanvasSync.CanvasScale : 1);
     }
 
-
+    public static void StageClear()
+    {
+        Instance.clearPanel.transform.DOScaleX(1, 0.5f);
+        Instance.clearParticle.Play();
+        Instance.isClear = true;
+    }
 }

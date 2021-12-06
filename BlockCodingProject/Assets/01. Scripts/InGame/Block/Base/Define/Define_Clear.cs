@@ -12,6 +12,9 @@ public class Define_Clear : BaseBlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
+                Effect_StageClear effect = PoolManager.GetItem<Effect_StageClear>();
+                effect.transform.position = obj.transform.position;
+
                 StageClear();
             }
         }
@@ -55,6 +58,6 @@ public class Define_Clear : BaseBlockScript
 
     public void StageClear()
     {
-        print("Å¬¸®¾î");
+        GameManager.StageClear();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerUpHandler, IPointerExitHandler
+public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [HideInInspector]
     public bool joyStick = false;
@@ -108,16 +108,6 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerEnterHa
         touchId = eventData.pointerId;
         joyStick = true;
         joyStickHold = true;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-
     }
 
     public void OnPointerUp(PointerEventData eventData)
