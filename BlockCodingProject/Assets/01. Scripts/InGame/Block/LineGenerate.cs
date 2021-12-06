@@ -112,7 +112,6 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                     UIManager.Instance.wallBlockEffect.SetActive(true);
                 }
                 UIManager.Instance.wallBlockEffect.transform.position = hit.point;
-                Debug.Log("º®¿¡ ´êÀ½");
             }
             else
             {
