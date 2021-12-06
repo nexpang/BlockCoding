@@ -110,4 +110,26 @@ public class TitleManager : MonoBehaviour
 
 
     }
+
+    private void StartSceneSkip()
+    {
+        logoText.SetActive(true);
+        logoText.transform.localScale = Vector3.one;
+
+        startPanel.alpha = 0;
+        startPanel.blocksRaycasts = false;
+        startPanel.interactable = false;
+
+        startBtn.transform.localScale = Vector3.one;
+        startBtn.gameObject.SetActive(true);
+        settingBtn.transform.localScale = Vector3.one;
+        settingBtn.gameObject.SetActive(true);
+        leaveBtn.transform.localScale = Vector3.one;
+        leaveBtn.gameObject.SetActive(true);
+
+        leftLine.startColor = Color.black;
+        leftLine.endColor = Color.black;
+        rightLine.startColor = Color.black;
+        rightLine.endColor = Color.black;
+    }
 }
