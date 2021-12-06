@@ -8,11 +8,13 @@ public class ObjectPoolManager : MonoBehaviour
 {
     public GameObject clearEffectPrefab;
     public GameObject connectEffectPrefab;
+    public GameObject deathEffectPrefab;
 
     private void Awake()
     {
         PoolManager.CreatePool<Effect_Clear>(clearEffectPrefab, transform);
         PoolManager.CreatePool<Effect_Connect>(connectEffectPrefab, transform);
+        PoolManager.CreatePool<Effect_Death>(deathEffectPrefab, transform);
     }
 
     private void Start()

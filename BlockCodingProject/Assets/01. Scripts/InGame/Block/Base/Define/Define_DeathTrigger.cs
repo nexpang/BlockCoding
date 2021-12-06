@@ -10,6 +10,9 @@ public class Define_DeathTrigger : BaseBlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
+                CameraMove.ShakeCam(3, 0.5f);
+                Effect_Death effect = PoolManager.GetItem<Effect_Death>();
+                effect.transform.position = obj.transform.position;
                 Death(obj);
             }
         }

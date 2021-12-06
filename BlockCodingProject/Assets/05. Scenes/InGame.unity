@@ -3274,6 +3274,7 @@ GameObject:
   - component: {fileID: 531779436}
   - component: {fileID: 531779435}
   - component: {fileID: 531779434}
+  - component: {fileID: 531779437}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -3356,6 +3357,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &531779437
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531779432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 3
+  mNoiseOffsets: {x: -306.4388, y: 730.28845, z: -802.41797}
 --- !u!1 &543187309
 GameObject:
   m_ObjectHideFlags: 0
@@ -6614,6 +6632,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   clearEffectPrefab: {fileID: 5358215348884614580, guid: 0ef1831315e6de7429e88b26bcce5e7f, type: 3}
   connectEffectPrefab: {fileID: 5358215348884614580, guid: f27b80a788e2a764495a08d0b54f3bc9, type: 3}
+  deathEffectPrefab: {fileID: 5358215348884614580, guid: d736a7bb264bdb6499bf04450a459d98, type: 3}
 --- !u!114 &1410922949
 MonoBehaviour:
   m_ObjectHideFlags: 0
