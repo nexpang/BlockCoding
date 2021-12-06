@@ -8,10 +8,13 @@ public class TitleManager : MonoBehaviour
 {
     public static TitleManager Instance;
 
+    public StageData stageData;
+
     public RectTransform titleCanvas;
     public CanvasGroup startPanel;
     public CanvasGroup stagePanel;
     public RectTransform stageBlock;
+
 
     public LineRenderer leftLine;
     public LineRenderer rightLine;
@@ -22,17 +25,32 @@ public class TitleManager : MonoBehaviour
     public Button startBtn; 
     public Button settingBtn; 
     public Button leaveBtn; 
+    public Button stagePrevBtn; 
+    public Button stageNextBtn;
+
+    [Header("Stage")]
+    public Text stageNameTxt;
+    public Image stageImg;
+    private int stageIndex = 0;
 
     private void Awake()
     {
-        if(!Instance)
+        if (!Instance)
         {
             Instance = this;
         }
-        
+
         startPanel.alpha = 1;
         startPanel.blocksRaycasts = true;
         startPanel.interactable = true;
+
+        stagePanel.alpha = 0;
+        stagePanel.blocksRaycasts = false;
+        stagePanel.interactable = false;
+
+        stageBlock.transform.localScale = new Vector3(1, 0, 1);
+
+        RefreshStage();
     }
 
     void Start()
@@ -52,10 +70,7 @@ public class TitleManager : MonoBehaviour
 
         startBtn.onClick.AddListener(() =>
         {
-            stagePanel.alpha = 1;
-            stagePanel.interactable = true;
-            stagePanel.blocksRaycasts = true;
-            stageBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
+            StagePanel(true);
         });
 
         settingBtn.onClick.AddListener(() =>
@@ -71,6 +86,18 @@ public class TitleManager : MonoBehaviour
                     Application.Quit();
 #endif
         });
+
+        stagePrevBtn.onClick.AddListener(() =>
+        {
+            stageIndex--;
+            RefreshStage();
+        });
+
+        stageNextBtn.onClick.AddListener(() =>
+        {
+            stageIndex++;
+            RefreshStage();
+        });
     }
 
     public void MainPanelStart()
@@ -80,6 +107,7 @@ public class TitleManager : MonoBehaviour
         logoText.transform.localScale = new Vector3(1, 0, 1);
         Color lineColor = Color.white;
 
+        seq.AppendInterval(2);
         seq.Append(
             logoText.transform.DOScaleY(1, 0.5f)
         );
@@ -114,6 +142,50 @@ public class TitleManager : MonoBehaviour
         }));
 
 
+    }
+
+    public void StagePanel(bool value)
+    {
+        if(value)
+        {
+            stagePanel.alpha = 1;
+            stagePanel.interactable = true;
+            stagePanel.blocksRaycasts = true;
+            stageBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            stageBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            {
+                stagePanel.alpha = 0;
+                stagePanel.blocksRaycasts = false;
+                stagePanel.interactable = false;
+            });
+        }
+    }
+
+    private void RefreshStage()
+    {
+        if (stageIndex == 0)
+        {
+            stagePrevBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            stagePrevBtn.gameObject.SetActive(true);
+        }
+
+        if (stageIndex > stageData.stageInfos.Length - 2)
+        {
+            stageNextBtn.gameObject.SetActive(false);
+        }
+        else
+        {
+            stageNextBtn.gameObject.SetActive(true);
+        }
+
+        stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
+        stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
     }
 
     private void StartSceneSkip()
