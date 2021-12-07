@@ -10,18 +10,29 @@ public enum GameStatus
     CODING
 }
 
+[Serializable]
+public struct StageBox
+{
+    public GameObject ingameStage;
+    public GameObject codingStage;
+}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
     public GameStatus gameStatus;
-
+    
+    [HideInInspector]
     public List<LineGenerate> lineCircles = new List<LineGenerate>();
+    [HideInInspector]
     public LineRenderer[] enabledLines;
 
     public RectTransform codingPanel;
     public RectTransform ingameCanvas;
+
+    public StageBox[] stages;
+    public int currentStageIndex = 0;
 
     [Header("Clear")]
     public RectTransform clearPanel;
@@ -36,6 +47,15 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        for(int i = 0; i<stages.Length;i++)
+        {
+            stages[i].codingStage.SetActive(false);
+            stages[i].ingameStage.SetActive(false);
+        }
+
+        stages[currentStageIndex].codingStage.SetActive(true);
+        stages[currentStageIndex].ingameStage.SetActive(true);
 
         CanvasSync.ScaleEdit(ingameCanvas);
     }
