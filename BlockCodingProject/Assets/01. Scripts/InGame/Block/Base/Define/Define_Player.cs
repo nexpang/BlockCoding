@@ -17,18 +17,7 @@ public class Define_Player : BaseBlockScript
             defined_Player.Add(child.inGameObj);
 
             ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-            if (coll != null)
-            {
-                coll.SetCollision();
-                for (int i = 0; i < coll.collisionList.Count; i++)
-                {
-                    ObjectCollider item_coll = coll.collisionList[i].GetComponent<ObjectCollider>();
-                    if (item_coll != null)
-                    {
-                        item_coll.ActionPlay();
-                    }
-                }
-            }
+            coll.ActionPlay();
         }
     }
 
@@ -40,12 +29,6 @@ public class Define_Player : BaseBlockScript
         if (child != null)
         {
             defined_Player.Remove(child.inGameObj);
-
-            ObjectCollider coll = child.inGameObj.GetComponent<ObjectCollider>();
-            if (coll != null)
-            {
-                coll.SetTrigger();
-            }
         }
     }
 }
