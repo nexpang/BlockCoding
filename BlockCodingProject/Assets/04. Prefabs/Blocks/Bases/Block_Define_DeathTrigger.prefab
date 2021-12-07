@@ -529,7 +529,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!1 &117958866093773553
 GameObject:
@@ -651,7 +651,6 @@ MonoBehaviour:
   isConnected: 0
   isFixedUpdate: 0
   output: {fileID: 117958865527775384}
-  childBlock: {fileID: 0}
 --- !u!1 &117958866102915726
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +778,7 @@ LineRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_UseWorldSpace: 1
+  m_UseWorldSpace: 0
   m_Loop: 0
 --- !u!1 &117958866172006242
 GameObject:
