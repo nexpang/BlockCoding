@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     IEnumerator LateStart()
     {
         yield return null;
+        yield return null;
         enabledLines = FindObjectsOfType<LineRenderer>();
         foreach (LineRenderer item in enabledLines)
         {
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         else
         {
             gameStatus = GameStatus.INGAME;
+            UIManager.ClickBlock(true);
             enabledLines = FindObjectsOfType<LineRenderer>();
             foreach (LineRenderer item in enabledLines)
             {
@@ -120,6 +122,7 @@ public class GameManager : MonoBehaviour
             DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(1920, 0), 1).OnComplete(() =>
             {
                 isMovingTab = false;
+                UIManager.ClickBlock(false);
             });
         }
     }
