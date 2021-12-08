@@ -21,10 +21,10 @@ public class ObjectPoolManager : MonoBehaviour
 
     private void Start()
     {
-        SceneManager.activeSceneChanged += (scene, scene2) =>
+/*        SceneManager.activeSceneChanged += (scene, scene2) =>
         {
             Debug.Log("씬 전환으로 인한 풀 리셋");
             PoolManager.ResetPool();
-        };
+        };*/
     }
 }

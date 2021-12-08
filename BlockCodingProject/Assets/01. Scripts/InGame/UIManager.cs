@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+using System;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
@@ -13,6 +16,7 @@ public class UIManager : MonoBehaviour
     public Transform blockPanel;
 
     public GameObject wallBlockEffect;
+    public RectTransform screenFade;
 
     private const float zoomScale = 0.5f;
 
@@ -41,5 +45,21 @@ public class UIManager : MonoBehaviour
     public static void ClickBlock(bool value)
     {
         Instance.clickBlockPanel.SetActive(value);
+    }
+
+    public static void ResetFadeInOut(bool value, Action action)
+    {
+        Instance.screenFade.gameObject.SetActive(true);
+
+        if (value) // ÀÎ
+        {
+            DOTween.To(() => Instance.screenFade.offsetMin, value => Instance.screenFade.offsetMin = value, new Vector2(1920, 0), 1).OnComplete(() => action());
+        }
+        else
+        {
+            Instance.screenFade.offsetMin = new Vector2(0, 0);
+            Instance.screenFade.offsetMax = new Vector2(-1920, 0);
+            DOTween.To(() => Instance.screenFade.offsetMax, value => Instance.screenFade.offsetMax = value, new Vector2(0, 0), 1).OnComplete(() => action());
+        }
     }
 }

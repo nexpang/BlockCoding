@@ -25,7 +25,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Outline outline;
 
     private bool isCantConnect = false;
-    private bool isConnetReady = false;
+    private bool isConnectReady = false;
 
     [NonSerialized] public BlockScript myBlock;
 
@@ -43,9 +43,9 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     IEnumerator SetLineStart()
     {
-        if (connectedHole != null) isConnetReady = true;
-        yield return new WaitForSecondsRealtime(0.1f);
-        if (isConnetReady)
+        if (connectedHole != null) isConnectReady = true;
+        yield return null;
+        if (isConnectReady)
         {
             connectedHole.connectedHole = this;
             myBlock.OnConnected(connectedHole.myBlock);
@@ -67,6 +67,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 line.SetPositions(lineWayPoints);
             }, (connectedHole.transform.position - transform.position) * CanvasSync.CanvasScale, 1);
         }
+        yield return null;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

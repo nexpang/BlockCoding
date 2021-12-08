@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class TitleManager : MonoBehaviour
     public Button leaveBtn; 
     public Button stagePrevBtn; 
     public Button stageNextBtn;
+    public Button stageStartBtn;
 
     [Header("Stage")]
     public Text stageNameTxt;
@@ -97,6 +99,11 @@ public class TitleManager : MonoBehaviour
         {
             stageIndex++;
             RefreshStage();
+        });
+
+        stageStartBtn.onClick.AddListener(() =>
+        {
+            SceneManager.LoadScene("InGame");
         });
     }
 
@@ -186,6 +193,7 @@ public class TitleManager : MonoBehaviour
 
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
+        GameManager.currentStageIndex = stageIndex;
     }
 
     private void StartSceneSkip()

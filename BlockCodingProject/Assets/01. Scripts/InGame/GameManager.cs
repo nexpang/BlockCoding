@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public enum GameStatus
 {
@@ -32,12 +33,14 @@ public class GameManager : MonoBehaviour
     public RectTransform ingameCanvas;
 
     public StageBox[] stages;
-    public int currentStageIndex = 0;
 
     [Header("Clear")]
     public RectTransform clearPanel;
     public ParticleSystem clearParticle;
 
+    [Tooltip("-1이면 기본값, 다른 값으면 그 값으로 바꾼다.")]
+    public int DEBUG_currentIndex = -1; // 디버그용
+    public static int currentStageIndex = 0;
     private bool isMovingTab = false;
     public bool isClear { get; private set; } = false;
 
@@ -48,16 +51,41 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
 
-        for(int i = 0; i<stages.Length;i++)
+        if (DEBUG_currentIndex != -1) // 디버그
+        {
+            currentStageIndex = DEBUG_currentIndex;
+        }
+
+        CanvasSync.ScaleEdit(ingameCanvas);
+
+        for (int i = 0; i<stages.Length;i++)
         {
             stages[i].codingStage.SetActive(false);
             stages[i].ingameStage.SetActive(false);
         }
 
-        stages[currentStageIndex].codingStage.SetActive(true);
         stages[currentStageIndex].ingameStage.SetActive(true);
+        stages[currentStageIndex].codingStage.SetActive(true);
 
-        CanvasSync.ScaleEdit(ingameCanvas);
+        if (gameStatus == GameStatus.INGAME)
+        {
+            StartCoroutine(LateStart());
+        }
+    }
+
+    private void Start()
+    {
+        UIManager.ResetFadeInOut(true, () => { });
+    }
+
+    IEnumerator LateStart()
+    {
+        yield return null;
+        enabledLines = FindObjectsOfType<LineRenderer>();
+        foreach (LineRenderer item in enabledLines)
+        {
+            item.gameObject.SetActive(false);
+        }
     }
 
     public void MovingPanel(bool moveToCoding)
@@ -107,5 +135,13 @@ public class GameManager : MonoBehaviour
         Instance.clearPanel.transform.DOScaleX(1, 0.5f);
         Instance.clearParticle.Play();
         Instance.isClear = true;
+    }
+
+    public void StageReset()
+    {
+        UIManager.ResetFadeInOut(false, () => {
+            PoolManager.ResetPool();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        });
     }
 }

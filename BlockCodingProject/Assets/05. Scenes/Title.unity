@@ -699,6 +699,7 @@ MonoBehaviour:
   leaveBtn: {fileID: 1180285915}
   stagePrevBtn: {fileID: 699421671}
   stageNextBtn: {fileID: 263775698}
+  stageStartBtn: {fileID: 1299783638}
   stageNameTxt: {fileID: 772461604}
   stageImg: {fileID: 938929322}
 --- !u!4 &246733788
