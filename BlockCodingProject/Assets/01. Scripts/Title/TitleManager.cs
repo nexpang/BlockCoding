@@ -45,15 +45,29 @@ public class TitleManager : MonoBehaviour
             Instance = this;
         }
 
-        startPanel.alpha = 1;
-        startPanel.blocksRaycasts = true;
-        startPanel.interactable = true;
+        if (!GameManager.skipTitleScene)
+        {
+            startPanel.alpha = 1;
+            startPanel.blocksRaycasts = true;
+            startPanel.interactable = true;
 
-        stagePanel.alpha = 0;
-        stagePanel.blocksRaycasts = false;
-        stagePanel.interactable = false;
+            stagePanel.alpha = 0;
+            stagePanel.blocksRaycasts = false;
+            stagePanel.interactable = false;
 
-        stageBlock.transform.localScale = new Vector3(1, 0, 1);
+            stageBlock.transform.localScale = new Vector3(1, 0, 1);
+        }
+        else
+        {
+            StartSceneSkip();
+            stageIndex = GameManager.currentStageIndex;
+
+            stagePanel.alpha = 1;
+            stagePanel.blocksRaycasts = true;
+            stagePanel.interactable = true;
+
+            stageBlock.transform.localScale = new Vector3(1, 1, 1);
+        }
 
         RefreshStage();
     }

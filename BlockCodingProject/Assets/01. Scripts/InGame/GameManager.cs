@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
     [Tooltip("-1이면 기본값, 다른 값으면 그 값으로 바꾼다.")]
     public int DEBUG_currentIndex = -1; // 디버그용
     public static int currentStageIndex = 0;
+    public static bool skipTitleScene = false;
+
     private bool isMovingTab = false;
     public bool isClear { get; private set; } = false;
 
@@ -135,9 +137,23 @@ public class GameManager : MonoBehaviour
 
     public static void StageClear()
     {
-        Instance.clearPanel.transform.DOScaleX(1, 0.5f);
-        Instance.clearParticle.Play();
-        Instance.isClear = true;
+        if (!Instance.isClear)
+        {
+            Instance.isClear = true;
+
+            Instance.clearPanel.transform.DOScaleX(1, 0.5f);
+            Instance.clearParticle.Play();
+            Instance.Invoke("MoveToTitle", 3);      
+        }
+    }
+
+    private void MoveToTitle()
+    {
+        UIManager.ResetFadeInOut(false, () => {
+            skipTitleScene = true;
+            PoolManager.ResetPool();
+            SceneManager.LoadScene("Title");
+        });
     }
 
     public void StageReset()
