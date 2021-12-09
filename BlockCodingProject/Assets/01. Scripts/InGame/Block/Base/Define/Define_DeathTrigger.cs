@@ -47,6 +47,7 @@ public class Define_DeathTrigger : BaseBlockScript
 
     private void Death(GameObject obj)
     {
+        PlaySound.PlaySFX(PlaySound.audioBox.SFX_playerDead);
         obj.SetActive(false);
     }
 }

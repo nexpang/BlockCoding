@@ -142,6 +142,7 @@ public class GameManager : MonoBehaviour
 
     public void StageReset()
     {
+        PlaySound.PlaySFX(PlaySound.audioBox.SFX_reset);
         UIManager.ResetFadeInOut(false, () => {
             PoolManager.ResetPool();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);

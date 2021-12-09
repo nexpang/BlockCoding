@@ -16,6 +16,9 @@ public class TitleManager : MonoBehaviour
     public CanvasGroup stagePanel;
     public RectTransform stageBlock;
 
+    public CanvasGroup optionPanel;
+    public RectTransform optionBlock;
+
 
     public LineRenderer leftLine;
     public LineRenderer rightLine;
@@ -112,6 +115,7 @@ public class TitleManager : MonoBehaviour
         Sequence seq = DOTween.Sequence();
         logoText.SetActive(true);
         logoText.transform.localScale = new Vector3(1, 0, 1);
+        PlaySound.PlaySFX(PlaySound.audioBox.SFX_gameStart);
         Color lineColor = Color.white;
 
         seq.AppendInterval(2);
@@ -167,6 +171,26 @@ public class TitleManager : MonoBehaviour
                 stagePanel.alpha = 0;
                 stagePanel.blocksRaycasts = false;
                 stagePanel.interactable = false;
+            });
+        }
+    }
+
+    public void SettingPanel(bool value)
+    {
+        if (value)
+        {
+            optionPanel.alpha = 1;
+            optionPanel.interactable = true;
+            optionPanel.blocksRaycasts = true;
+            optionBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
+        }
+        else
+        {
+            optionBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            {
+                optionPanel.alpha = 0;
+                optionPanel.blocksRaycasts = false;
+                optionPanel.interactable = false;
             });
         }
     }

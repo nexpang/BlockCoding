@@ -49,11 +49,15 @@ public class UIManager : MonoBehaviour
 
     public static void ResetFadeInOut(bool value, Action action)
     {
+        ClickBlock(true);
         Instance.screenFade.gameObject.SetActive(true);
 
         if (value) // ÀÎ
         {
-            DOTween.To(() => Instance.screenFade.offsetMin, value => Instance.screenFade.offsetMin = value, new Vector2(1920, 0), 1).OnComplete(() => action());
+            DOTween.To(() => Instance.screenFade.offsetMin, value => Instance.screenFade.offsetMin = value, new Vector2(1920, 0), 1).OnComplete(() => {
+                ClickBlock(false);
+                action();
+            });
         }
         else
         {

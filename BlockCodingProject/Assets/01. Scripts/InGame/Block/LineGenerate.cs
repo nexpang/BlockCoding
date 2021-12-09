@@ -179,6 +179,7 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
                 connectedHole.myBlock.OnConnected(myBlock);
 
+                PlaySound.PlaySFX(PlaySound.audioBox.SFX_connect);
                 lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * CanvasSync.CanvasScale;
                 GameManager.Instance.lineCircles[lowestDisCircle].outline.enabled = false;
                 line.SetPositions(lineWayPoints);

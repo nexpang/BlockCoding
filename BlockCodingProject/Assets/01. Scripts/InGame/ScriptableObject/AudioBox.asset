@@ -12,47 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1663335a8ad6efb4580cfbc0a993764f, type: 3}
   m_Name: AudioBox
   m_EditorClassIdentifier: 
-  ambient_dead_by_shoes: {fileID: 8300000, guid: 0ea42b78fd769414399fde0e62c9308d, type: 3}
-  ambient_rising1: {fileID: 8300000, guid: 664da1a328224e646b288248dc1481d4, type: 3}
-  ambient_rising2: {fileID: 8300000, guid: eb8866f25408d9c4d969f4be9718d5ad, type: 3}
-  object_book_close: {fileID: 8300000, guid: 8ddbdecb50963394e8b04bcc5d2d3fe5, type: 3}
-  object_book_nextpage: {fileID: 8300000, guid: 2f0b7824c8f1fdc478f170cc3d45452c, type: 3}
-  object_book_pickup: {fileID: 8300000, guid: ce75c33f81fa05143921923baae715f9, type: 3}
-  object_door_lock: {fileID: 8300000, guid: 79eba9c4e8b895646a9022ab854d4a43, type: 3}
-  object_door_unlock: {fileID: 8300000, guid: f87682c612781944ba3b13c72124a555, type: 3}
-  object_door_open: {fileID: 8300000, guid: 1cc2804a0905d8e469a186308722f8c1, type: 3}
-  object_door_close: {fileID: 8300000, guid: 1f4ebf7d44adc9242b279f7b362d9c1d, type: 3}
-  object_drawer_open: {fileID: 8300000, guid: 9401b559888858c4d997be807f480d24, type: 3}
-  object_drawer_close: {fileID: 8300000, guid: c60d8eba68d6a87409265a9d769a30f0, type: 3}
-  object_coffer_tick: {fileID: 8300000, guid: bfbc79a88ad4d3d4981ef306ff7513e9, type: 3}
-  object_coffer_open: {fileID: 8300000, guid: b76fce30cba1cfe44851254767b34a36, type: 3}
-  object_coffer_wrong: {fileID: 8300000, guid: 93a9e8c3b1daae64d9e48f37c0bc330c, type: 3}
-  object_coffer_correct: {fileID: 8300000, guid: 4ddfb422e7223cb40904178e0058e902, type: 3}
-  object_coffer_light_on: {fileID: 8300000, guid: 18b065f7f1c9e9d48841489f1d402e6d, type: 3}
-  object_clock_bell: {fileID: 8300000, guid: cb44d0d3387b36d4e837b2a2d3ef0306, type: 3}
-  object_clock_correct: {fileID: 8300000, guid: 117f0a1d2331b44468fd992290aa5e2e, type: 3}
-  object_clock_ambient: {fileID: 8300000, guid: 61d0d5df7d92d2542a288a0cae428846, type: 3}
-  object_clock_powerOn: {fileID: 8300000, guid: 2462ff69198da9441a9add96c428042e, type: 3}
-  object_clock_bomb: {fileID: 8300000, guid: 2033cb185ac129b49b5c5944934f4f3a, type: 3}
-  object_clock_bigbell: {fileID: 8300000, guid: 0e4472301f7d0744f833ff41eab49c01, type: 3}
-  object_clock_glassbreak: {fileID: 8300000, guid: 889f58201f3586248b4a6257b42a5e83, type: 3}
-  object_clock_assembly: {fileID: 8300000, guid: e499ec5bcc3ca6c48a7d5044e3e378de, type: 3}
-  object_pillow_move: {fileID: 8300000, guid: 78fbf310c81ba8a41a16ec37bab271df, type: 3}
-  object_tree_grow1: {fileID: 8300000, guid: 214ffe9c420c4b244bee69541936197c, type: 3}
-  object_tree_grow2: {fileID: 8300000, guid: 9d65f3c4585eb1e4f8f091f92d250562, type: 3}
-  object_tree_break: {fileID: 8300000, guid: 702c9a5aad7d80043aac5b62951f4a41, type: 3}
-  object_pickup: {fileID: 8300000, guid: da5b14a7405e1d649916342ef62025c7, type: 3}
-  RedShoes_redshoes_walk1_left: {fileID: 8300000, guid: 058131ebebadeeb4a8def027724f1f10, type: 3}
-  RedShoes_redshoes_walk1_right: {fileID: 8300000, guid: 8da1f4db99319d84f85597bcb6a52f7a, type: 3}
-  RedShoes_redshoes_walk2_left: {fileID: 8300000, guid: c3d90241b6860934c92269292b89ec87, type: 3}
-  RedShoes_redshoes_walk2_right: {fileID: 8300000, guid: 7204d3bd4be0beb4899e53206522cdbf, type: 3}
-  RedShoes_redshoes_struggle: {fileID: 8300000, guid: 4cfbff683755626488b490312bedfd30, type: 3}
-  ui_menu_select: {fileID: 8300000, guid: 5200a2e5276d8c44588750b52aa23c60, type: 3}
-  ui_game_start: {fileID: 8300000, guid: 52392a54bb6b0ab4e95bf9ececeacfa0, type: 3}
-  ui_module_clear: {fileID: 8300000, guid: 0549bb35761b8764e971fe19277ebbc4, type: 3}
-  ui_tapSound: {fileID: 8300000, guid: 06dd52295d5c6334ca26dac34870c8dd, type: 3}
-  player_leftWalk: {fileID: 8300000, guid: 3f29e7701ee774e4e85a4d27a4193aab, type: 3}
-  player_rightWalk: {fileID: 8300000, guid: cb87094d1f559324a8068c95e413d3b8, type: 3}
-  player_fall: {fileID: 8300000, guid: 309eb5628edcfb740b1421de3a274080, type: 3}
-  player_eatMuffin: {fileID: 8300000, guid: 287ec562eb0bcb44b9e051817bf3a019, type: 3}
-  player_eatMilk: {fileID: 8300000, guid: 168d16d7e1964064bbe20ee123a5aacc, type: 3}
+  BGM_title: {fileID: 0}
+  SFX_gameStart: {fileID: 8300000, guid: 13ab39d4d79cfe9469b28d0958aff51c, type: 3}
+  SFX_connect: {fileID: 8300000, guid: 1264ea0c3540de44a836b1f86e32ed7b, type: 3}
+  SFX_reset: {fileID: 8300000, guid: f260283cc49f73b4889a084144c66403, type: 3}
+  SFX_playerDead: {fileID: 8300000, guid: df35d7a9b4f46aa4383ab8a4a59e4119, type: 3}
