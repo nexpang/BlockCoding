@@ -35,6 +35,7 @@ public class TitleManager : MonoBehaviour
 
     [Header("Stage")]
     public Text stageNameTxt;
+    public Text stageTimeTxt;
     public Image stageImg;
     private int stageIndex = 0;
 
@@ -56,6 +57,16 @@ public class TitleManager : MonoBehaviour
             stagePanel.interactable = false;
 
             stageBlock.transform.localScale = new Vector3(1, 0, 1);
+
+            logoText.SetActive(false);
+
+            startBtn.gameObject.SetActive(false);
+            settingBtn.gameObject.SetActive(false);
+            leaveBtn.gameObject.SetActive(false);
+
+            startBtn.transform.localScale = Vector3.zero;
+            settingBtn.transform.localScale = Vector3.zero;
+            leaveBtn.transform.localScale = Vector3.zero;
         }
         else
         {
@@ -66,7 +77,7 @@ public class TitleManager : MonoBehaviour
             stagePanel.blocksRaycasts = true;
             stagePanel.interactable = true;
 
-            stageBlock.transform.localScale = new Vector3(1, 1, 1);
+            stageBlock.transform.localScale = Vector3.one;
         }
 
         RefreshStage();
@@ -75,17 +86,6 @@ public class TitleManager : MonoBehaviour
     void Start()
     {
         CanvasSync.ScaleEdit(titleCanvas);
-
-        logoText.SetActive(false);
-
-        startBtn.gameObject.SetActive(false);
-        settingBtn.gameObject.SetActive(false);
-        leaveBtn.gameObject.SetActive(false);
-
-        startBtn.transform.localScale = Vector3.zero;
-        settingBtn.transform.localScale = Vector3.zero;
-        leaveBtn.transform.localScale = Vector3.zero;
-
 
         startBtn.onClick.AddListener(() =>
         {
@@ -230,6 +230,8 @@ public class TitleManager : MonoBehaviour
         }
 
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
+        int currentTime = SecurityPlayerPrefs.GetInt($"stage{stageIndex}_timer", -1);
+        stageTimeTxt.text = currentTime == -1 ? "--:--" : currentTime.ToString("00:00");
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
         GameManager.currentStageIndex = stageIndex;
     }

@@ -21843,7 +21843,7 @@ MonoBehaviour:
     codingStage: {fileID: 265206742}
   clearPanel: {fileID: 1372268292}
   clearParticle: {fileID: 1039757813}
-  DEBUG_currentIndex: 5
+  DEBUG_currentIndex: -1
 --- !u!4 &1410922947
 Transform:
   m_ObjectHideFlags: 0

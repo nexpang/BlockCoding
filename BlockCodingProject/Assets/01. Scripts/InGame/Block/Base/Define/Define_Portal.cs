@@ -22,7 +22,10 @@ public class Define_Portal : BlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
-                obj.transform.position = output_portal.transform.position;
+                if (output_portal != null)
+                {
+                    obj.transform.position = output_portal.transform.position;
+                }
             }
         }
     }
@@ -46,6 +49,12 @@ public class Define_Portal : BlockScript
             if (line == downOutput)
             {
                 output_portal = child.inGameObj;
+
+                if (input_portal != null)
+                {
+                    ObjectCollider coll = input_portal.GetComponent<ObjectCollider>();
+                    coll.ActionPlay();
+                }
             }
         }
     }

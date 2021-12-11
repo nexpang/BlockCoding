@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
     public static bool skipTitleScene = false;
 
     private bool isMovingTab = false;
+    private int clearTime;
+
     public bool isClear { get; private set; } = false;
 
     private void Awake()
@@ -79,6 +81,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         UIManager.ResetFadeInOut(true, () => { });
+        StartCoroutine(Timer());
     }
 
     IEnumerator LateStart()
@@ -90,6 +93,15 @@ public class GameManager : MonoBehaviour
         foreach (LineRenderer item in enabledLines)
         {
             item.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator Timer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            clearTime++;
         }
     }
 
@@ -145,7 +157,21 @@ public class GameManager : MonoBehaviour
 
             Instance.clearPanel.transform.DOScaleX(1, 0.5f);
             Instance.clearParticle.Play();
-            Instance.Invoke("MoveToTitle", 3);      
+            Instance.Invoke("MoveToTitle", 3);
+
+            int beforeScore = SecurityPlayerPrefs.GetInt($"stage{currentStageIndex}_timer", -1);
+
+            if(beforeScore != -1)
+            {
+                if (beforeScore > Instance.clearTime)
+                {
+                    SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+                }
+            }
+            else
+            {
+                SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+            }
         }
     }
 
