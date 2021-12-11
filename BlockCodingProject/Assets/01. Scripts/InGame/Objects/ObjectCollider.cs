@@ -32,6 +32,7 @@ public class ObjectCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        print("Call By : " + gameObject.name + ", collision : " + collision.gameObject.name);
         collisionList.Add(collision.gameObject);
         if (enterAction != null)
         {

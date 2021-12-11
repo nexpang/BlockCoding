@@ -12,9 +12,9 @@ public class BaseBlockScript : BlockScript
         output.myBlock = this;
     }
 
-    public override void OnConnected(BlockScript connectedBy)
+    public override void OnConnected(BlockScript connectedBy, LineGenerate line)
     {
-        base.OnConnected(connectedBy);
+        base.OnConnected(connectedBy, line);
         ChildBlockScript childBlock = connectedBy.GetComponent<ChildBlockScript>();
         if(childBlock != null)
         {
@@ -27,9 +27,9 @@ public class BaseBlockScript : BlockScript
         }
     }
 
-    public override void OnDisconnected(BlockScript disconnectedBy)
+    public override void OnDisconnected(BlockScript disconnectedBy, LineGenerate line)
     {
-        base.OnDisconnected(disconnectedBy);
+        base.OnDisconnected(disconnectedBy, line);
         ChildBlockScript childBlock = disconnectedBy.GetComponent<ChildBlockScript>();
         if (childBlock != null)
         {

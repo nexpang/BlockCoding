@@ -48,8 +48,10 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (isConnectReady)
         {
             connectedHole.connectedHole = this;
-            myBlock.OnConnected(connectedHole.myBlock);
-            connectedHole.myBlock.OnConnected(myBlock);
+
+            myBlock.OnConnected(connectedHole.myBlock, this);
+            connectedHole.myBlock.OnConnected(myBlock, connectedHole);
+
             line.gameObject.SetActive(true);
             if (!isTouchable)
             {
@@ -81,8 +83,8 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 connectedHole.line.gameObject.SetActive(false);
             }
             connectedHole.connectedHole = null;
-            connectedHole.myBlock.OnDisconnected(myBlock);
-            myBlock.OnDisconnected(connectedHole.myBlock);
+            connectedHole.myBlock.OnDisconnected(myBlock, connectedHole);
+            myBlock.OnDisconnected(connectedHole.myBlock, this);
         }
         connectedHole = null;
         line.gameObject.SetActive(true);
@@ -175,9 +177,9 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 effect.transform.position = GameManager.Instance.lineCircles[lowestDisCircle].transform.position;
 
                 connectedHole = GameManager.Instance.lineCircles[lowestDisCircle];
-                myBlock.OnConnected(connectedHole.myBlock);
+                myBlock.OnConnected(connectedHole.myBlock, this);
 
-                connectedHole.myBlock.OnConnected(myBlock);
+                connectedHole.myBlock.OnConnected(myBlock, connectedHole);
 
                 PlaySound.PlaySFX(PlaySound.audioBox.SFX_connect);
                 lineWayPoints[1] = (GameManager.Instance.lineCircles[lowestDisCircle].transform.position - transform.position) * CanvasSync.CanvasScale;
@@ -206,9 +208,9 @@ public class LineGenerate : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             {
                 connectedHole.line.gameObject.SetActive(false);
             }
-            connectedHole.myBlock.OnDisconnected(myBlock);
+            connectedHole.myBlock.OnDisconnected(myBlock, connectedHole);
             connectedHole.connectedHole = null;
-            myBlock.OnDisconnected(connectedHole.myBlock);
+            myBlock.OnDisconnected(connectedHole.myBlock, this);
         }
         connectedHole = null;
     }

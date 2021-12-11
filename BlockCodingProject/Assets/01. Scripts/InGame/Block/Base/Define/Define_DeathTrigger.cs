@@ -10,7 +10,7 @@ public class Define_DeathTrigger : BaseBlockScript
         {
             if (obj == Define_Player.defined_Player[i])
             {
-                CameraMove.ShakeCam(3, 0.5f);
+                CameraMove.ShakeCam(3, 0.75f);
                 Effect_Death effect = PoolManager.GetItem<Effect_Death>();
                 effect.transform.position = obj.transform.position;
                 Death(obj);
@@ -18,9 +18,9 @@ public class Define_DeathTrigger : BaseBlockScript
         }
     }
 
-    public override void OnConnected(BlockScript connectedBy)
+    public override void OnConnected(BlockScript connectedBy, LineGenerate line)
     {
-        base.OnConnected(connectedBy);
+        base.OnConnected(connectedBy, line);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
 
         if (child != null)
@@ -33,9 +33,9 @@ public class Define_DeathTrigger : BaseBlockScript
         }
     }
 
-    public override void OnDisconnected(BlockScript disconnectedBy)
+    public override void OnDisconnected(BlockScript disconnectedBy, LineGenerate line)
     {
-        base.OnDisconnected(disconnectedBy);
+        base.OnDisconnected(disconnectedBy, line);
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
         if (child != null)

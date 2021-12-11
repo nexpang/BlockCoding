@@ -27,6 +27,7 @@ public class CameraMove : MonoBehaviour
 
     public static void ShakeCam(float intensity, float time)
     {
+
         // 코루틴 호출
         if (!Instance.isShake)
         {
@@ -49,7 +50,6 @@ public class CameraMove : MonoBehaviour
     {
         inGameCamBPerlin.m_AmplitudeGain = intensity;
         currentTime = 0;
-
         while (true)
         {
             yield return null;

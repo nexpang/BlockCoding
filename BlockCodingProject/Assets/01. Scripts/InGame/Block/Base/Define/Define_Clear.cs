@@ -20,9 +20,9 @@ public class Define_Clear : BaseBlockScript
         }
     }
 
-    public override void OnConnected(BlockScript connectedBy)
+    public override void OnConnected(BlockScript connectedBy, LineGenerate line)
     {
-        base.OnConnected(connectedBy);
+        base.OnConnected(connectedBy, line);
         ChildBlockScript child = connectedBy.GetComponent<ChildBlockScript>();
         if (child != null)
         {
@@ -39,9 +39,9 @@ public class Define_Clear : BaseBlockScript
         }
     }
 
-    public override void OnDisconnected(BlockScript disconnectedBy)
+    public override void OnDisconnected(BlockScript disconnectedBy, LineGenerate line)
     {
-        base.OnDisconnected(disconnectedBy);
+        base.OnDisconnected(disconnectedBy, line);
         ChildBlockScript child = disconnectedBy.GetComponent<ChildBlockScript>();
 
         if (child != null)

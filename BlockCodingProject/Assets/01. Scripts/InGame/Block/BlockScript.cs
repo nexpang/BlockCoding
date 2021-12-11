@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class BlockScript : MonoBehaviour
 {
-    public bool isConnected = false;
-
-    public virtual void OnDisconnected(BlockScript disconnectedBy)
+    public virtual void OnDisconnected(BlockScript disconnectedBy, LineGenerate line)
     {
-        isConnected = false;
+        
     }
 
-    public virtual void OnConnected(BlockScript connectedBy)
+    public virtual void OnConnected(BlockScript connectedBy, LineGenerate line)
     {
-        isConnected = true;
+
     }
 }

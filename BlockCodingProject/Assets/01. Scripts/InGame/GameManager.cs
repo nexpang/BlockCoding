@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public enum GameStatus
 {
@@ -82,6 +83,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LateStart()
     {
+        yield return null;
         yield return null;
         yield return null;
         enabledLines = FindObjectsOfType<LineRenderer>();
