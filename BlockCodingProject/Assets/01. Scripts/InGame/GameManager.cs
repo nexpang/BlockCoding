@@ -158,6 +158,7 @@ public class GameManager : MonoBehaviour
             Instance.clearPanel.transform.DOScaleX(1, 0.5f);
             Instance.clearParticle.Play();
             Instance.Invoke("MoveToTitle", 3);
+            PlaySound.PlaySFX(PlaySound.audioBox.SFX_stageClear);
 
             int beforeScore = SecurityPlayerPrefs.GetInt($"stage{currentStageIndex}_timer", -1);
 

@@ -21875,6 +21875,7 @@ MonoBehaviour:
   connectEffectPrefab: {fileID: 5358215348884614580, guid: f27b80a788e2a764495a08d0b54f3bc9, type: 3}
   deathEffectPrefab: {fileID: 5358215348884614580, guid: d736a7bb264bdb6499bf04450a459d98, type: 3}
   stageClearEffectPrefab: {fileID: 5358215348884614580, guid: ba669cb2b358d6a46afa5ee9a1d68ad8, type: 3}
+  teleportEffectPrefab: {fileID: 3643314784175299321, guid: baae944ff35c07b4b98fcfd5b71f4d43, type: 3}
 --- !u!114 &1410922949
 MonoBehaviour:
   m_ObjectHideFlags: 0

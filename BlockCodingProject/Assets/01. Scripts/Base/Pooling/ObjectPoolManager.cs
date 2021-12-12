@@ -10,6 +10,7 @@ public class ObjectPoolManager : MonoBehaviour
     public GameObject connectEffectPrefab;
     public GameObject deathEffectPrefab;
     public GameObject stageClearEffectPrefab;
+    public GameObject teleportEffectPrefab;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class ObjectPoolManager : MonoBehaviour
         PoolManager.CreatePool<Effect_Connect>(connectEffectPrefab, transform);
         PoolManager.CreatePool<Effect_Death>(deathEffectPrefab, transform);
         PoolManager.CreatePool<Effect_StageClear>(stageClearEffectPrefab, transform, 1);
+        PoolManager.CreatePool<Effect_Teleport>(teleportEffectPrefab, transform, 2);
     }
 
     private void Start()

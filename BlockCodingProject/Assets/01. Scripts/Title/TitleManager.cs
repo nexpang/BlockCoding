@@ -37,6 +37,7 @@ public class TitleManager : MonoBehaviour
     public Text stageNameTxt;
     public Text stageTimeTxt;
     public Image stageImg;
+    public GameObject stageClearIcon;
     private int stageIndex = 0;
 
     private void Awake()
@@ -92,11 +93,6 @@ public class TitleManager : MonoBehaviour
             StagePanel(true);
         });
 
-        settingBtn.onClick.AddListener(() =>
-        {
-
-        });
-
         leaveBtn.onClick.AddListener(() =>
         {
 #if UNITY_EDITOR
@@ -108,12 +104,16 @@ public class TitleManager : MonoBehaviour
 
         stagePrevBtn.onClick.AddListener(() =>
         {
+            PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+
             stageIndex--;
             RefreshStage();
         });
 
         stageNextBtn.onClick.AddListener(() =>
         {
+            PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+
             stageIndex++;
             RefreshStage();
         });
@@ -143,6 +143,8 @@ public class TitleManager : MonoBehaviour
             startPanel.blocksRaycasts = false;
             startPanel.interactable = false;
 
+            PlaySound.PlaySFX(PlaySound.audioBox.SFX_fingerSnap);
+            PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
             DOTween.To(() => lineColor, value =>
             {
                 leftLine.startColor = value;
@@ -171,7 +173,9 @@ public class TitleManager : MonoBehaviour
 
     public void StagePanel(bool value)
     {
-        if(value)
+        PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+
+        if (value)
         {
             stagePanel.alpha = 1;
             stagePanel.interactable = true;
@@ -191,6 +195,8 @@ public class TitleManager : MonoBehaviour
 
     public void SettingPanel(bool value)
     {
+        PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+
         if (value)
         {
             optionPanel.alpha = 1;
@@ -231,6 +237,7 @@ public class TitleManager : MonoBehaviour
 
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
         int currentTime = SecurityPlayerPrefs.GetInt($"stage{stageIndex}_timer", -1);
+        stageClearIcon.SetActive(currentTime != -1);
         stageTimeTxt.text = currentTime == -1 ? "--:--" : currentTime.ToString("00:00");
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
         GameManager.currentStageIndex = stageIndex;

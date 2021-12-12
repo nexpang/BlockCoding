@@ -12,4 +12,7 @@ public class AudioBox : ScriptableObject
     public AudioClip SFX_connect;
     public AudioClip SFX_reset;
     public AudioClip SFX_playerDead;
+    public AudioClip SFX_buttonClick;
+    public AudioClip SFX_stageClear;
+    public AudioClip SFX_fingerSnap;
 }
