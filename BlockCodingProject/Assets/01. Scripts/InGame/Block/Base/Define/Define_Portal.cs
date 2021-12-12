@@ -25,6 +25,12 @@ public class Define_Portal : BlockScript
                 if (output_portal != null)
                 {
                     obj.transform.position = output_portal.transform.position;
+
+                    Effect_Teleport input_effect = PoolManager.GetItem<Effect_Teleport>();
+                    Effect_Teleport output_effect = PoolManager.GetItem<Effect_Teleport>();
+
+                    input_effect.transform.position = input_portal.transform.position;
+                    output_effect.transform.position = output_portal.transform.position;
                 }
             }
         }
