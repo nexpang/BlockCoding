@@ -19,7 +19,6 @@ public class TitleManager : MonoBehaviour
     public CanvasGroup optionPanel;
     public RectTransform optionBlock;
 
-
     public LineRenderer leftLine;
     public LineRenderer rightLine;
 
@@ -28,6 +27,7 @@ public class TitleManager : MonoBehaviour
     [Header("Buttons")]
     public Button startBtn; 
     public Button settingBtn; 
+    public Button settingExitBtn; 
     public Button leaveBtn; 
     public Button stagePrevBtn; 
     public Button stageNextBtn;
@@ -91,6 +91,16 @@ public class TitleManager : MonoBehaviour
         startBtn.onClick.AddListener(() =>
         {
             StagePanel(true);
+        });
+
+        settingBtn.onClick.AddListener(() =>
+        {
+            SettingPanel(true);
+        });
+
+        settingExitBtn.onClick.AddListener(() =>
+        {
+            SettingPanel(false);
         });
 
         leaveBtn.onClick.AddListener(() =>
@@ -174,43 +184,31 @@ public class TitleManager : MonoBehaviour
     public void StagePanel(bool value)
     {
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
-
-        if (value)
-        {
-            stagePanel.alpha = 1;
-            stagePanel.interactable = true;
-            stagePanel.blocksRaycasts = true;
-            stageBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
-        }
-        else
-        {
-            stageBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
-            {
-                stagePanel.alpha = 0;
-                stagePanel.blocksRaycasts = false;
-                stagePanel.interactable = false;
-            });
-        }
+        PanelMove(stagePanel, stageBlock, value);
     }
 
     public void SettingPanel(bool value)
     {
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+        PanelMove(optionPanel, optionBlock, value);
+    }
 
+    public static void PanelMove(CanvasGroup panel, RectTransform block, bool value)
+    {
         if (value)
         {
-            optionPanel.alpha = 1;
-            optionPanel.interactable = true;
-            optionPanel.blocksRaycasts = true;
-            optionBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
+            panel.alpha = 1;
+            panel.interactable = true;
+            panel.blocksRaycasts = true;
+            block.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
         }
         else
         {
-            optionBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            block.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
             {
-                optionPanel.alpha = 0;
-                optionPanel.blocksRaycasts = false;
-                optionPanel.interactable = false;
+                panel.alpha = 0;
+                panel.blocksRaycasts = false;
+                panel.interactable = false;
             });
         }
     }
@@ -238,7 +236,7 @@ public class TitleManager : MonoBehaviour
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
         int currentTime = SecurityPlayerPrefs.GetInt($"stage{stageIndex}_timer", -1);
         stageClearIcon.SetActive(currentTime != -1);
-        stageTimeTxt.text = currentTime == -1 ? "--:--" : currentTime.ToString("00:00");
+        stageTimeTxt.text = "최고기록\n" + (currentTime == -1 ? "--:--" : currentTime.ToString("00:00"));
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
         GameManager.currentStageIndex = stageIndex;
     }
@@ -263,5 +261,7 @@ public class TitleManager : MonoBehaviour
         leftLine.endColor = Color.black;
         rightLine.startColor = Color.black;
         rightLine.endColor = Color.black;
+
+        PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
     }
 }

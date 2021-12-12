@@ -332,19 +332,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 48677396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 246733787}
-        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
-        m_MethodName: SettingPanel
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &48677396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,19 +676,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 148542059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 246733787}
-        m_TargetAssemblyTypeName: TitleManager, Assembly-CSharp
-        m_MethodName: SettingPanel
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &148542059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1170,7 @@ MonoBehaviour:
   logoText: {fileID: 1097457160}
   startBtn: {fileID: 1008712513}
   settingBtn: {fileID: 48677395}
+  settingExitBtn: {fileID: 148542058}
   leaveBtn: {fileID: 1180285915}
   stagePrevBtn: {fileID: 699421671}
   stageNextBtn: {fileID: 263775698}

@@ -20,3 +20,4 @@ MonoBehaviour:
   SFX_buttonClick: {fileID: 8300000, guid: a08754f0b8468cc49add6d0c1011f61a, type: 3}
   SFX_stageClear: {fileID: 8300000, guid: 6b8448eb3405ad1428545a54ebc4e715, type: 3}
   SFX_fingerSnap: {fileID: 8300000, guid: 7a9e19c2b92652e4eabeb364d9170739, type: 3}
+  SFX_teleport: {fileID: 8300000, guid: f44f04c04bfcc0f4f9b81394a94a172d, type: 3}

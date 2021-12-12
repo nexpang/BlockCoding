@@ -31,6 +31,8 @@ public class Define_Portal : BlockScript
 
                     input_effect.transform.position = input_portal.transform.position;
                     output_effect.transform.position = output_portal.transform.position;
+
+                    PlaySound.PlaySFX(PlaySound.audioBox.SFX_teleport);
                 }
             }
         }

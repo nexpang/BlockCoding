@@ -15,4 +15,5 @@ public class AudioBox : ScriptableObject
     public AudioClip SFX_buttonClick;
     public AudioClip SFX_stageClear;
     public AudioClip SFX_fingerSnap;
+    public AudioClip SFX_teleport;
 }
