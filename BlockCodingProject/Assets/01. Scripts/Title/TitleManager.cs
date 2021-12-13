@@ -21,6 +21,7 @@ public class TitleManager : MonoBehaviour
 
     public TitleLine leftLine;
     public TitleLine rightLine;
+    public Animator cursorAnim;
 
     public GameObject logoText;
 
@@ -148,6 +149,8 @@ public class TitleManager : MonoBehaviour
         logoText.transform.localScale = new Vector3(1, 0, 1);
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_gameStart);
         Color lineColor = Color.white;
+
+        cursorAnim.SetTrigger("idle");
 
         seq.AppendInterval(2);
         seq.Append(

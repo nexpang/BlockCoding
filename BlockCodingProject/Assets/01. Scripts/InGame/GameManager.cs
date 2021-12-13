@@ -47,6 +47,10 @@ public class GameManager : MonoBehaviour
     private bool isMovingTab = false;
     private int clearTime;
 
+    [Header("Tutorial")]
+    public Tutorial tutorial;
+    private bool tuto_isTrigger = false;
+
     public bool isClear { get; private set; } = false;
 
     private void Awake()
@@ -115,6 +119,14 @@ public class GameManager : MonoBehaviour
         if (moveToCoding)
         {
             gameStatus = GameStatus.CODING;
+            if(!tuto_isTrigger)
+            {
+                if(currentStageIndex == 0)
+                {
+                    tuto_isTrigger = true;
+                    tutorial.FadeShow(new int[2] { 3, 4 });
+                }
+            }
             UIManager.ClickBlock(true);
             DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1).OnComplete(() =>
             {
