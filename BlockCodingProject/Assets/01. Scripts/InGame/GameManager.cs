@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.ResetFadeInOut(true, () => { });
         StartCoroutine(Timer());
+        PlaySound.PlayBGM(PlaySound.audioBox.BGM_inGame);
     }
 
     IEnumerator LateStart()
@@ -159,6 +160,7 @@ public class GameManager : MonoBehaviour
             Instance.clearParticle.Play();
             Instance.Invoke("MoveToTitle", 3);
             PlaySound.PlaySFX(PlaySound.audioBox.SFX_stageClear);
+            PlaySound.SetFade(PlaySound.bgmSource, 0);
 
             int beforeScore = SecurityPlayerPrefs.GetInt($"stage{currentStageIndex}_timer", -1);
 
@@ -176,7 +178,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void MoveToTitle()
+    public void MoveToTitle()
     {
         UIManager.ResetFadeInOut(false, () => {
             skipTitleScene = true;

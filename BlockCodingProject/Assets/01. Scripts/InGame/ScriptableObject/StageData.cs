@@ -11,5 +11,6 @@ public class StageData : ScriptableObject
 public class StageInfo
 {
     public string stageName;
+    public string stageLore;
     public Sprite stageSprite;
 }

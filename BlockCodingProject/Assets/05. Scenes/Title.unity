@@ -1165,8 +1165,8 @@ MonoBehaviour:
   stageBlock: {fileID: 877781603}
   optionPanel: {fileID: 927057761}
   optionBlock: {fileID: 1473270805}
-  leftLine: {fileID: 691045659}
-  rightLine: {fileID: 617511035}
+  leftLine: {fileID: 2035390677}
+  rightLine: {fileID: 412635812}
   logoText: {fileID: 1097457160}
   startBtn: {fileID: 1008712513}
   settingBtn: {fileID: 48677395}
@@ -1744,6 +1744,7 @@ MonoBehaviour:
   connectedHole: {fileID: 0}
   line: {fileID: 617511035}
   outline: {fileID: 472353061}
+  isTouchable: 1
 --- !u!1 &472353061
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,6 +4773,7 @@ MonoBehaviour:
   connectedHole: {fileID: 0}
   line: {fileID: 691045659}
   outline: {fileID: 641558001}
+  isTouchable: 1
 --- !u!1 &2061523122
 GameObject:
   m_ObjectHideFlags: 0
@@ -4880,7 +4882,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061523122}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0

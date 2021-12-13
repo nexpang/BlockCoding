@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlaySound : MonoBehaviour
 {
@@ -38,6 +39,12 @@ public class PlaySound : MonoBehaviour
         source.mute = value;
         SecurityPlayerPrefs.SetBool("option.mute.bgm", bgmSource.mute);
         SecurityPlayerPrefs.SetBool("option.mute.sfx", sfxSource.mute);
+    }
+
+    public static void SetFade(AudioSource source, float volume, float time = 1)
+    {
+        source.DOKill();
+        source.DOFade(volume, time);
     }
 
     private static void RefreshAudioSourceStatus()

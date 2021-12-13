@@ -19,8 +19,8 @@ public class TitleManager : MonoBehaviour
     public CanvasGroup optionPanel;
     public RectTransform optionBlock;
 
-    public LineRenderer leftLine;
-    public LineRenderer rightLine;
+    public TitleLine leftLine;
+    public TitleLine rightLine;
 
     public GameObject logoText;
 
@@ -39,6 +39,8 @@ public class TitleManager : MonoBehaviour
     public Image stageImg;
     public GameObject stageClearIcon;
     private int stageIndex = 0;
+
+    private bool isSkipped = false;
 
     private void Awake()
     {
@@ -132,6 +134,11 @@ public class TitleManager : MonoBehaviour
         {
             SceneManager.LoadScene("InGame");
         });
+
+        if(isSkipped)
+        {
+            PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
+        }
     }
 
     public void MainPanelStart()
@@ -157,10 +164,10 @@ public class TitleManager : MonoBehaviour
             PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
             DOTween.To(() => lineColor, value =>
             {
-                leftLine.startColor = value;
-                leftLine.endColor = value;
-                rightLine.startColor = value;
-                rightLine.endColor = value;
+                leftLine.line.startColor = value;
+                leftLine.line.endColor = value;
+                rightLine.line.startColor = value;
+                rightLine.line.endColor = value;
             }, Color.black, 1);
         });
 
@@ -257,11 +264,23 @@ public class TitleManager : MonoBehaviour
         leaveBtn.transform.localScale = Vector3.one;
         leaveBtn.gameObject.SetActive(true);
 
-        leftLine.startColor = Color.black;
-        leftLine.endColor = Color.black;
-        rightLine.startColor = Color.black;
-        rightLine.endColor = Color.black;
+        leftLine.line.startColor = Color.black;
+        leftLine.line.endColor = Color.black;
+        rightLine.line.startColor = Color.black;
+        rightLine.line.endColor = Color.black;
 
-        PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
+        leftLine.line.gameObject.SetActive(true);
+
+        Vector3[] lineWayPoints = new Vector3[2];
+
+        lineWayPoints[0] = Vector2.zero;
+        lineWayPoints[1] = (rightLine.transform.position - leftLine.transform.position) * CanvasSync.canvasScaleValue;
+
+        leftLine.line.SetPositions(lineWayPoints);
+
+        leftLine.isTouchable = false;
+        rightLine.isTouchable = false;
+
+        isSkipped = true;
     }
 }

@@ -18,6 +18,13 @@ public class UIManager : MonoBehaviour
     public GameObject wallBlockEffect;
     public RectTransform screenFade;
 
+    [Header("Lore")]
+    public CanvasGroup lorePanel;
+    public RectTransform loreBlock;
+
+    public Text objNameText;
+    public Text loreText;
+
     private const float zoomScale = 0.5f;
 
     public static float currentZoomValue = 1f;
