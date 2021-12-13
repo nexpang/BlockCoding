@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 2318277737612574315}
   - component: {fileID: 2318277737612574314}
   - component: {fileID: 2318277737612574356}
+  - component: {fileID: 8440346435374350136}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -380,6 +381,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8440346435374350136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2318277737612574312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf996fb27abe054d9dcb2babf81c83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lore: "Input\uC5D0 \uC5F0\uACB0\uB41C \uC624\uBE0C\uC81D\uD2B8\uC5D0\n\uD50C\uB808\uC774\uC5B4\uAC00
+    \uCDA9\uB3CC\uD558\uBA74, Output\uC5D0\n\uC5F0\uACB0\uB41C \uC624\uBE0C\uC81D\uD2B8\uB85C
+    \uC21C\uAC04\uC774\uB3D9\uD569\uB2C8\uB2E4."
 --- !u!1 &2318277737685558148
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +771,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57eb5045f4882664d88e7fba5a58c2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isConnected: 0
   upOutput: {fileID: 2318277738277474706}
   downOutput: {fileID: 6428054702367524769}
   input_portal: {fileID: 0}
@@ -849,7 +864,7 @@ GameObject:
   - component: {fileID: 2318277738070838206}
   - component: {fileID: 2318277738070838200}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

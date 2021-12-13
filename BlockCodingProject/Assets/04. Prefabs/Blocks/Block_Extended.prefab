@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 8726046297525021528}
   - component: {fileID: 8726046297525021529}
   - component: {fileID: 8726046297525021607}
+  - component: {fileID: 8640758139403745089}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -418,6 +419,20 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &8640758139403745089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726046297525021531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf996fb27abe054d9dcb2babf81c83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lore: "\uC624\uBE0C\uC81D\uD2B8\uB97C \uB450 \uAC1C \uC774\uC0C1 \uC815\uC758\uAC00
+    \uAC00\uB2A5\uD558\uB3C4\uB85D\n\uD655\uC7A5\uC131\uC744 \uBD80\uC5EC\uD569\uB2C8\uB2E4."
 --- !u!1 &8726046297598015159
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,7 +808,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7bf0f5e4d99edf4eafdf7d4ea30aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isConnected: 0
   input: {fileID: 8726046298797012501}
   upOutput: {fileID: 8726046298173146273}
   downOutput: {fileID: 468046482}
@@ -1118,7 +1132,7 @@ GameObject:
   - component: {fileID: 8726046298520166029}
   - component: {fileID: 8726046298520166027}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

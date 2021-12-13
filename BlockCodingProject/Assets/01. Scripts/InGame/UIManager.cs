@@ -21,7 +21,10 @@ public class UIManager : MonoBehaviour
     [Header("Lore")]
     public CanvasGroup lorePanel;
     public RectTransform loreBlock;
+    public Button loreExitBtn;
 
+    public Image loreHeader;
+    public Image loreIcon;
     public Text objNameText;
     public Text loreText;
 
@@ -47,6 +50,10 @@ public class UIManager : MonoBehaviour
             blockPanel.transform.localScale = new Vector3(currentZoomValue, currentZoomValue, currentZoomValue);
         });
 
+        loreExitBtn.onClick.AddListener(() =>
+        {
+            TitleManager.PanelMove(lorePanel, loreBlock, false);
+        });
     }
 
     public static void ClickBlock(bool value)
@@ -72,5 +79,15 @@ public class UIManager : MonoBehaviour
             Instance.screenFade.offsetMax = new Vector2(-1920, 0);
             DOTween.To(() => Instance.screenFade.offsetMax, value => Instance.screenFade.offsetMax = value, new Vector2(0, 0), 1).OnComplete(() => action());
         }
+    }
+
+    public static void LorePanel(Sprite objSprite, Color headerColor, string objName, string objLore)
+    {
+        TitleManager.PanelMove(Instance.lorePanel, Instance.loreBlock, true);
+
+        Instance.loreIcon.sprite = objSprite;
+        Instance.loreHeader.color = headerColor;
+        Instance.objNameText.text = objName;
+        Instance.loreText.text = objLore;
     }
 }

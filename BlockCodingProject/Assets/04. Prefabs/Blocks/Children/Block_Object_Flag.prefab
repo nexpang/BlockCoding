@@ -520,7 +520,7 @@ GameObject:
   - component: {fileID: 6334891110966350676}
   - component: {fileID: 6334891110966350674}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -719,7 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc57991bc0ae1594da26745d3ba80201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isConnected: 0
   inGameObj: {fileID: 0}
   input: {fileID: 6334891110135872460}
 --- !u!1 &6334891111141780423
