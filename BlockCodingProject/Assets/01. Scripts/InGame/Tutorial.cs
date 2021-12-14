@@ -17,16 +17,23 @@ public class Tutorial : MonoBehaviour
 
     private void Awake()
     {
-        if(GameManager.currentStageIndex != 0)
-        {
-            gameObject.SetActive(false);
-        }
-
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
     private void Start()
     {
+        if (GameManager.currentStageIndex != 0)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            canvasGroup.alpha = 1;
+            canvasGroup.blocksRaycasts = true;
+            canvasGroup.interactable = true;
+        }
+
         fadeClickPanel.onClick.AddListener(() =>
         {
             FadeDequeue();

@@ -13004,9 +13004,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774166692}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &775401580
 GameObject:
@@ -29929,7 +29929,7 @@ MonoBehaviour:
     codingStage: {fileID: 190590157}
   clearPanel: {fileID: 1372268292}
   clearParticle: {fileID: 1039757813}
-  DEBUG_currentIndex: 5
+  DEBUG_currentIndex: -1
   tutorial: {fileID: 774166696}
 --- !u!4 &1410922947
 Transform:
