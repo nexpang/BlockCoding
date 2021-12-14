@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AudioBox
   m_EditorClassIdentifier: 
   BGM_title: {fileID: 8300000, guid: a7eebf7e21c972f4ba0155cfbab1c2d1, type: 3}
+  BGM_inGame: {fileID: 8300000, guid: 1fc09b587bcba364087432e9d5b10d4e, type: 3}
   SFX_gameStart: {fileID: 8300000, guid: 13ab39d4d79cfe9469b28d0958aff51c, type: 3}
   SFX_connect: {fileID: 8300000, guid: 1264ea0c3540de44a836b1f86e32ed7b, type: 3}
   SFX_reset: {fileID: 8300000, guid: f260283cc49f73b4889a084144c66403, type: 3}
@@ -20,3 +21,4 @@ MonoBehaviour:
   SFX_buttonClick: {fileID: 8300000, guid: a08754f0b8468cc49add6d0c1011f61a, type: 3}
   SFX_stageClear: {fileID: 8300000, guid: 6b8448eb3405ad1428545a54ebc4e715, type: 3}
   SFX_fingerSnap: {fileID: 8300000, guid: 7a9e19c2b92652e4eabeb364d9170739, type: 3}
+  SFX_teleport: {fileID: 8300000, guid: f44f04c04bfcc0f4f9b81394a94a172d, type: 3}

@@ -19,15 +19,16 @@ public class TitleManager : MonoBehaviour
     public CanvasGroup optionPanel;
     public RectTransform optionBlock;
 
-
-    public LineRenderer leftLine;
-    public LineRenderer rightLine;
+    public TitleLine leftLine;
+    public TitleLine rightLine;
+    public Animator cursorAnim;
 
     public GameObject logoText;
 
     [Header("Buttons")]
     public Button startBtn; 
     public Button settingBtn; 
+    public Button settingExitBtn; 
     public Button leaveBtn; 
     public Button stagePrevBtn; 
     public Button stageNextBtn;
@@ -35,10 +36,13 @@ public class TitleManager : MonoBehaviour
 
     [Header("Stage")]
     public Text stageNameTxt;
+    public Text stageLoreTxt;
     public Text stageTimeTxt;
     public Image stageImg;
     public GameObject stageClearIcon;
     private int stageIndex = 0;
+
+    private bool isSkipped = false;
 
     private void Awake()
     {
@@ -93,6 +97,16 @@ public class TitleManager : MonoBehaviour
             StagePanel(true);
         });
 
+        settingBtn.onClick.AddListener(() =>
+        {
+            SettingPanel(true);
+        });
+
+        settingExitBtn.onClick.AddListener(() =>
+        {
+            SettingPanel(false);
+        });
+
         leaveBtn.onClick.AddListener(() =>
         {
 #if UNITY_EDITOR
@@ -120,8 +134,15 @@ public class TitleManager : MonoBehaviour
 
         stageStartBtn.onClick.AddListener(() =>
         {
+            DOTween.KillAll();
+            GameManager.clearTime = 0;
             SceneManager.LoadScene("InGame");
         });
+
+        if(isSkipped)
+        {
+            PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
+        }
     }
 
     public void MainPanelStart()
@@ -131,6 +152,8 @@ public class TitleManager : MonoBehaviour
         logoText.transform.localScale = new Vector3(1, 0, 1);
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_gameStart);
         Color lineColor = Color.white;
+
+        cursorAnim.SetTrigger("idle");
 
         seq.AppendInterval(2);
         seq.Append(
@@ -147,10 +170,10 @@ public class TitleManager : MonoBehaviour
             PlaySound.PlayBGM(PlaySound.audioBox.BGM_title);
             DOTween.To(() => lineColor, value =>
             {
-                leftLine.startColor = value;
-                leftLine.endColor = value;
-                rightLine.startColor = value;
-                rightLine.endColor = value;
+                leftLine.line.startColor = value;
+                leftLine.line.endColor = value;
+                rightLine.line.startColor = value;
+                rightLine.line.endColor = value;
             }, Color.black, 1);
         });
 
@@ -174,43 +197,31 @@ public class TitleManager : MonoBehaviour
     public void StagePanel(bool value)
     {
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
-
-        if (value)
-        {
-            stagePanel.alpha = 1;
-            stagePanel.interactable = true;
-            stagePanel.blocksRaycasts = true;
-            stageBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
-        }
-        else
-        {
-            stageBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
-            {
-                stagePanel.alpha = 0;
-                stagePanel.blocksRaycasts = false;
-                stagePanel.interactable = false;
-            });
-        }
+        PanelMove(stagePanel, stageBlock, value);
     }
 
     public void SettingPanel(bool value)
     {
         PlaySound.PlaySFX(PlaySound.audioBox.SFX_buttonClick);
+        PanelMove(optionPanel, optionBlock, value);
+    }
 
+    public static void PanelMove(CanvasGroup panel, RectTransform block, bool value)
+    {
         if (value)
         {
-            optionPanel.alpha = 1;
-            optionPanel.interactable = true;
-            optionPanel.blocksRaycasts = true;
-            optionBlock.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
+            panel.alpha = 1;
+            panel.interactable = true;
+            panel.blocksRaycasts = true;
+            block.DOScaleY(1, 0.5f).SetEase(Ease.OutBounce);
         }
         else
         {
-            optionBlock.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            block.DOScaleY(0, 0.5f).SetEase(Ease.OutBounce).OnComplete(() =>
             {
-                optionPanel.alpha = 0;
-                optionPanel.blocksRaycasts = false;
-                optionPanel.interactable = false;
+                panel.alpha = 0;
+                panel.blocksRaycasts = false;
+                panel.interactable = false;
             });
         }
     }
@@ -236,11 +247,24 @@ public class TitleManager : MonoBehaviour
         }
 
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
+        stageLoreTxt.text = $"\"{stageData.stageInfos[stageIndex].stageLore}\"";
         int currentTime = SecurityPlayerPrefs.GetInt($"stage{stageIndex}_timer", -1);
         stageClearIcon.SetActive(currentTime != -1);
-        stageTimeTxt.text = currentTime == -1 ? "--:--" : currentTime.ToString("00:00");
+        stageTimeTxt.text = "최고기록\n" + TimeCalculate(currentTime);
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
         GameManager.currentStageIndex = stageIndex;
+    }
+
+    private string TimeCalculate(int time)
+    {
+        if(time == -1)
+        {
+            return "--:--";
+        }
+        else
+        {
+            return (time / 60).ToString("00") + ":" + (time % 60).ToString("00");
+        }
     }
 
     private void StartSceneSkip()
@@ -259,9 +283,23 @@ public class TitleManager : MonoBehaviour
         leaveBtn.transform.localScale = Vector3.one;
         leaveBtn.gameObject.SetActive(true);
 
-        leftLine.startColor = Color.black;
-        leftLine.endColor = Color.black;
-        rightLine.startColor = Color.black;
-        rightLine.endColor = Color.black;
+        leftLine.line.startColor = Color.black;
+        leftLine.line.endColor = Color.black;
+        rightLine.line.startColor = Color.black;
+        rightLine.line.endColor = Color.black;
+
+        leftLine.line.gameObject.SetActive(true);
+
+        Vector3[] lineWayPoints = new Vector3[2];
+
+        lineWayPoints[0] = Vector2.zero;
+        lineWayPoints[1] = (rightLine.transform.position - leftLine.transform.position) * CanvasSync.canvasScaleValue;
+
+        leftLine.line.SetPositions(lineWayPoints);
+
+        leftLine.isTouchable = false;
+        rightLine.isTouchable = false;
+
+        isSkipped = true;
     }
 }

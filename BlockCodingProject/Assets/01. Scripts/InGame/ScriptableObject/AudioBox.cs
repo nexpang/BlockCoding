@@ -6,6 +6,7 @@ public class AudioBox : ScriptableObject
 {
     [Header("BGM")]
     public AudioClip BGM_title;
+    public AudioClip BGM_inGame;
 
     [Header("SFX")]
     public AudioClip SFX_gameStart;
@@ -15,4 +16,5 @@ public class AudioBox : ScriptableObject
     public AudioClip SFX_buttonClick;
     public AudioClip SFX_stageClear;
     public AudioClip SFX_fingerSnap;
+    public AudioClip SFX_teleport;
 }

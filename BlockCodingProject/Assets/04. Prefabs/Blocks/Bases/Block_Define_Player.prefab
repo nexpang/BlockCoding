@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7219522001694411939}
   - component: {fileID: 7219522001694411941}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2121118e26003a24081621c04b0c84ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isConnected: 0
   isFixedUpdate: 0
   output: {fileID: 7219522001907340943}
 --- !u!1 &7219522002423624752
@@ -663,6 +662,7 @@ GameObject:
   - component: {fileID: 7219522002554698102}
   - component: {fileID: 7219522002554698103}
   - component: {fileID: 7219522002554698121}
+  - component: {fileID: 162843715532673960}
   m_Layer: 5
   m_Name: Header
   m_TagString: Untagged
@@ -755,6 +755,22 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &162843715532673960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7219522002554698101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf996fb27abe054d9dcb2babf81c83d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lore: "\uC774\uAC83\uACFC \uC5F0\uACB0\uB41C \uC624\uBE0C\uC81D\uD2B8\uB294\n\uD50C\uB808\uC774\uC5B4
+    \uC624\uBE0C\uC81D\uD2B8\uB85C \uC804\uD658\uB418\uC5B4,\n\uD074\uB9AC\uC5B4
+    \uC624\uBE0C\uC81D\uD2B8\uC640 \uC8FD\uC74C \uC624\uBE0C\uC81D\uD2B8\uC5D0 \uC0C1\uD638\uC791\uC6A9\uC774
+    \uAC00\uB2A5\uD574\uC9D1\uB2C8\uB2E4."
 --- !u!1 &7219522002615657625
 GameObject:
   m_ObjectHideFlags: 0

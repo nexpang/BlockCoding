@@ -15,7 +15,7 @@ public class TitleLine : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private Vector3[] lineWayPoints = new Vector3[2];
     private float disMag;
 
-    private bool isTouchable = true;
+    public bool isTouchable = true;
 
     public void OnBeginDrag(PointerEventData eventData)
     {

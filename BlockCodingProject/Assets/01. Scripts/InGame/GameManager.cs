@@ -45,7 +45,11 @@ public class GameManager : MonoBehaviour
     public static bool skipTitleScene = false;
 
     private bool isMovingTab = false;
-    private int clearTime;
+    public static int clearTime;
+
+    [Header("Tutorial")]
+    public Tutorial tutorial;
+    private bool tuto_isTrigger = false;
 
     public bool isClear { get; private set; } = false;
 
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
     {
         UIManager.ResetFadeInOut(true, () => { });
         StartCoroutine(Timer());
+        PlaySound.PlayBGM(PlaySound.audioBox.BGM_inGame);
     }
 
     IEnumerator LateStart()
@@ -114,6 +119,14 @@ public class GameManager : MonoBehaviour
         if (moveToCoding)
         {
             gameStatus = GameStatus.CODING;
+            if(!tuto_isTrigger)
+            {
+                if(currentStageIndex == 0)
+                {
+                    tuto_isTrigger = true;
+                    tutorial.FadeShow(new int[2] { 3, 4 });
+                }
+            }
             UIManager.ClickBlock(true);
             DOTween.To(() => codingPanel.offsetMin, value => codingPanel.offsetMin = value, new Vector2(0, 0), 1).OnComplete(() =>
             {
@@ -159,24 +172,25 @@ public class GameManager : MonoBehaviour
             Instance.clearParticle.Play();
             Instance.Invoke("MoveToTitle", 3);
             PlaySound.PlaySFX(PlaySound.audioBox.SFX_stageClear);
+            PlaySound.SetFade(PlaySound.bgmSource, 0);
 
             int beforeScore = SecurityPlayerPrefs.GetInt($"stage{currentStageIndex}_timer", -1);
 
             if(beforeScore != -1)
             {
-                if (beforeScore > Instance.clearTime)
+                if (beforeScore > clearTime)
                 {
-                    SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+                    SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", clearTime);
                 }
             }
             else
             {
-                SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+                SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", clearTime);
             }
         }
     }
 
-    private void MoveToTitle()
+    public void MoveToTitle()
     {
         UIManager.ResetFadeInOut(false, () => {
             skipTitleScene = true;
