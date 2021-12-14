@@ -40,6 +40,3 @@ MonoBehaviour:
   - stageName: 2-4
     stageLore: "\uAD6C\uBD88\uAD6C\uBD88 \uBBF8\uB85C"
     stageSprite: {fileID: 21300000, guid: 5dc3fd7d62b575340933e5b25d9f396c, type: 3}
-  - stageName: 2-5
-    stageLore: 
-    stageSprite: {fileID: 0}
