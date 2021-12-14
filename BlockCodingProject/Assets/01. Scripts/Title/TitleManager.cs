@@ -36,6 +36,7 @@ public class TitleManager : MonoBehaviour
 
     [Header("Stage")]
     public Text stageNameTxt;
+    public Text stageLoreTxt;
     public Text stageTimeTxt;
     public Image stageImg;
     public GameObject stageClearIcon;
@@ -133,6 +134,7 @@ public class TitleManager : MonoBehaviour
 
         stageStartBtn.onClick.AddListener(() =>
         {
+            DOTween.KillAll();
             SceneManager.LoadScene("InGame");
         });
 
@@ -244,11 +246,24 @@ public class TitleManager : MonoBehaviour
         }
 
         stageNameTxt.text = $"Stage {stageData.stageInfos[stageIndex].stageName}";
+        stageLoreTxt.text = $"\"{stageData.stageInfos[stageIndex].stageLore}\"";
         int currentTime = SecurityPlayerPrefs.GetInt($"stage{stageIndex}_timer", -1);
         stageClearIcon.SetActive(currentTime != -1);
-        stageTimeTxt.text = "최고기록\n" + (currentTime == -1 ? "--:--" : currentTime.ToString("00:00"));
+        stageTimeTxt.text = "최고기록\n" + TimeCalculate(currentTime);
         stageImg.sprite = stageData.stageInfos[stageIndex].stageSprite;
         GameManager.currentStageIndex = stageIndex;
+    }
+
+    private string TimeCalculate(int time)
+    {
+        if(time == -1)
+        {
+            return "--:--";
+        }
+        else
+        {
+            return (time / 60).ToString("00") + ":" + (time % 60).ToString("00");
+        }
     }
 
     private void StartSceneSkip()

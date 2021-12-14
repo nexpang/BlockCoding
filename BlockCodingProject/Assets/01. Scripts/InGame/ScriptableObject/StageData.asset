@@ -17,28 +17,28 @@ MonoBehaviour:
     stageLore: "\uB5BC\uACE0, \uC5F0\uACB0\uD558\uACE0"
     stageSprite: {fileID: 0}
   - stageName: 1-2
-    stageLore: 
+    stageLore: "\uAC00\uB85C\uB9C9\uD78C \uAE38"
     stageSprite: {fileID: 0}
   - stageName: 1-3
-    stageLore: 
+    stageLore: "\uC77C\uC2EC\uB3D9\uCCB4"
     stageSprite: {fileID: 0}
   - stageName: 1-4
-    stageLore: 
+    stageLore: "\uAC1C\uB150\uC744 \uBC14\uB85C \uC54C\uB77C"
     stageSprite: {fileID: 0}
   - stageName: 1-5
-    stageLore: 
+    stageLore: "\uC5B4\uB518\uAC00 \uBE44\uC2B7\uD55C \uB290\uB08C"
     stageSprite: {fileID: 0}
   - stageName: 2-1
-    stageLore: 
+    stageLore: "\uADF8\uB8E8\uD130\uAE30"
     stageSprite: {fileID: 0}
   - stageName: 2-2
-    stageLore: 
+    stageLore: "\uBFB0\uB85C\uB85C\uB871"
     stageSprite: {fileID: 0}
   - stageName: 2-3
-    stageLore: 
+    stageLore: "\uBCBD \uC0AC\uC774 \uB108\uC640 \uB098"
     stageSprite: {fileID: 0}
   - stageName: 2-4
-    stageLore: 
+    stageLore: "\uAD6C\uBD88\uAD6C\uBD88 \uBBF8\uB85C"
     stageSprite: {fileID: 0}
   - stageName: 2-5
     stageLore: 
