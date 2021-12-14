@@ -135,6 +135,7 @@ public class TitleManager : MonoBehaviour
         stageStartBtn.onClick.AddListener(() =>
         {
             DOTween.KillAll();
+            GameManager.clearTime = 0;
             SceneManager.LoadScene("InGame");
         });
 

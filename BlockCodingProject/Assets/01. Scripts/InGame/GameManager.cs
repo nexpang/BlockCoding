@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     public static bool skipTitleScene = false;
 
     private bool isMovingTab = false;
-    private int clearTime;
+    public static int clearTime;
 
     [Header("Tutorial")]
     public Tutorial tutorial;
@@ -178,14 +178,14 @@ public class GameManager : MonoBehaviour
 
             if(beforeScore != -1)
             {
-                if (beforeScore > Instance.clearTime)
+                if (beforeScore > clearTime)
                 {
-                    SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+                    SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", clearTime);
                 }
             }
             else
             {
-                SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", Instance.clearTime);
+                SecurityPlayerPrefs.SetInt($"stage{currentStageIndex}_timer", clearTime);
             }
         }
     }
