@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using UnityEngine.EventSystems;
 
 public enum GameStatus
 {
@@ -206,5 +207,14 @@ public class GameManager : MonoBehaviour
             PoolManager.ResetPool();
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         });
+    }
+
+    public static bool IsPointerOverUIObject()
+    {
+        PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+        return results.Count > 0;
     }
 }

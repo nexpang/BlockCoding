@@ -20,7 +20,7 @@ public class PlayerInput : MonoBehaviour
         {
             if (GameManager.Instance.gameStatus == GameStatus.CODING)
             {
-                if (!EventSystem.current.IsPointerOverGameObject())
+                if (!GameManager.IsPointerOverUIObject())
                 {
                     clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     blockPanelPos = UIManager.Instance.blockPanel.position;
@@ -36,7 +36,7 @@ public class PlayerInput : MonoBehaviour
 
         if(isDrag)
         {
-            if(!EventSystem.current.IsPointerOverGameObject())
+            if(!GameManager.IsPointerOverUIObject())
             {
                 movePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
