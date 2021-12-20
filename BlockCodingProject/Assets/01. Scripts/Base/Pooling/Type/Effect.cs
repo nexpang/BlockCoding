@@ -7,7 +7,7 @@ public class Effect : MonoBehaviour
     public bool isLoop = false;
     public float destroyTime = 1f;
 
-    void Start()
+    void OnEnable()
     {
         if(!isLoop)
         {
