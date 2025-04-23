@@ -30,7 +30,7 @@ public class JoyStickInput : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         if(joyStickHold)
         {
             Vector2 touchPos = Vector2.zero;
-            #if UNITY_EDITOR
+            #if UNITY_EDITOR || UNITY_STANDALONE_WIN
             touchPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             #else
             for (int i = 0; i < Input.touches.Length; i++)
